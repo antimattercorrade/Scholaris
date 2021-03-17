@@ -12,6 +12,15 @@ BOT_NAME = 'prof'
 SPIDER_MODULES = ['prof.spiders']
 NEWSPIDER_MODULE = 'prof.spiders'
 
+from shutil import which 
+  
+SELENIUM_DRIVER_NAME = 'chrome'
+SELENIUM_DRIVER_EXECUTABLE_PATH = which('home/aditya/Desktop/search_engine/DS_Project/prof/prof/chromedriver') 
+SELENIUM_DRIVER_ARGUMENTS=['--headless']   
+  
+DOWNLOADER_MIDDLEWARES = { 
+     'scrapy_selenium.SeleniumMiddleware': 800
+     } 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'prof (+http://www.yourdomain.com)'
