@@ -15,9 +15,29 @@ NEWSPIDER_MODULE = 'prof.spiders'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'prof (+http://www.yourdomain.com)'
+USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
+FEED_EXPORT_ENCODING = 'utf-8'
+REDIRECT_ENABLED = False
+HTTPCACHE_IGNORE_HTTP_CODES = [301,302]
+
+CONCURRENT_REQUESTS = 1
+DOWNLOAD_DELAY = 2
+
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy.downloadermiddlewares.redirect.RedirectMiddleware': None,
+    'prof.middlewares.ThreatDefenceRedirectMiddleware': 600,
+}
+
+DEFAULT_REQUEST_HEADERS = {
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    'User-Agent': USER_AGENT,
+    'Connection': 'Keep-Alive',
+    'Accept-Encoding': 'gzip, deflate',
+    'Accept-Language': 'en-US,*',
+}
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
