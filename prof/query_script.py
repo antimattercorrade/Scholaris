@@ -11,13 +11,15 @@ if len(sys.argv) != 4 :
 query = sys.argv[3].split(" ")
 n = int(sys.argv[2])
 
+
 with open(sys.argv[1], 'rb') as indexdb:
         indexFile = pickle.load(indexdb)
-
+# print(indexFile.keys())
 
 #query
 list_doc = {}
 for q in query:
+	q = q.lower()
 	try :
 		for doc in indexFile[q]:
 				if doc['Scholar_ID'] in list_doc :

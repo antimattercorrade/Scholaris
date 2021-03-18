@@ -50,6 +50,22 @@ i=0
 for row in content:
 	tf={} 
 	#clean and list word
+	name_words = row['Name'].split()
+	for data in name_words:
+		clean_name = clean_str(data)
+		if clean_name in sw:
+			continue
+		if clean_name in tf :
+			tf[clean_name] += 1
+		else :
+			tf[clean_name] = 1
+
+		#df whole document frequency
+		if clean_name in df_data :
+			df_data[clean_name] += 1
+		else :
+			df_data[clean_name] = 1
+
 	for data in row['Publications']:
 		clean_publications = clean_str(data[0])
 		list_word = clean_publications.split(" ")		
