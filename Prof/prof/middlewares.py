@@ -130,13 +130,13 @@ class ThreatDefenceRedirectMiddleware(RedirectMiddleware):
         if not self.is_threat_defense_url(redirected.url):
             return super()._redirect(redirected, request, spider, reason)
 
-        logger.debug(f'Zipru threat defense triggered for {request.url}')
+        logger.debug(f'Threat defense triggered for {request.url}')
         request.cookies = self.bypass_threat_defense(redirected.url)
         request.dont_filter = True # prevents the original link being marked a dupe
         return request
 
     def is_threat_defense_url(self, url):
-        return '://scholar.google.com/citations?view_op=search_authors&mauthors=machine+learning' in url
+        return '://scholar.google.co.in/citations?user=' in url
 
     def bypass_threat_defense(self, url=None):
         # only navigate if any explicit url is provided
@@ -164,7 +164,7 @@ class ThreatDefenceRedirectMiddleware(RedirectMiddleware):
             if self.dryscrape_session.url() != url:
                 return self.dryscrape_session.url()
         logger.error(f'Maybe {self.dryscrape_session.url()} isn\'t a redirect URL?')
-        raise Exception('Timed out on the zipru redirect page.')
+        raise Exception('Timed out on the redirect page.')
 
     def solve_captcha(self, img, width=1280, height=800):
         # take a screenshot of the page
@@ -182,7 +182,7 @@ class ThreatDefenceRedirectMiddleware(RedirectMiddleware):
         os.unlink(filename)
         captcha_image = image.crop(box)
         captcha = pytesseract.image_to_string(captcha_image)
-        logger.debug(f'Solved the Zipru captcha: "{captcha}"')
+        logger.debug(f'Solved the captcha: "{captcha}"')
 
         # submit the captcha
         input = self.dryscrape_session.xpath('//input[@id = "solve_string"]')[0]
