@@ -4,6 +4,15 @@
     <head>
         <title>Professor Search</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="/static/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.2.0/dist/jBox.all.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.2.0/dist/jBox.all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
               .signbutton{
                 background-color: #4885ed;
@@ -109,7 +118,7 @@
         .card{
           position: relative;
           width: 315px; /* Remove for full width */
-          height: 350px; /* Remove for full width */
+          height: 400px; /* Remove for full width */
           margin:30px auto;
           box-shadow: 0 0 10px rgba(0,0,0, .3);
         }
@@ -184,8 +193,8 @@
         }
         
         .name{
-          font-size: 20px;
-          font-weight: 700;
+          font-size: 10px;
+          font-weight: 400;
           text-transform: uppercase;
           margin: 0 auto;
         }
@@ -266,6 +275,8 @@
             overflow-x: hidden; /* Hide horizontal scrollbar */
           }
         </style>
+        <script src="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.2.0/dist/jBox.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.2.0/dist/jBox.all.min.css" rel="stylesheet">
 
     </head>
     <body>
@@ -319,13 +330,14 @@
               {% for prof in i %}
                 <div class="col-md-4">
                     <div class="card">
-                        <div class="card-header"style="background-image: url({{prof.imageURL}})">
+                        <div class="card-header tooll" id="xyz{{prof.id}}" data-jbox-title="Summary" data-jbox-content='{{prof.summary}}' style="background-color:#95989A;background-image: url({{prof.imageURL}}),url(https://vcunited.club/wp-content/uploads/2020/01/No-image-available-2.jpg);background-position: 0px 0px; height:45%;width:45%;display: block;margin-left: auto;margin-right: auto;width: 58%;">
                         </div>
                         <div class="card-body">
-                            <h2 class="name"><a href="{{prof.homepage}}">{{prof.name}}</a></h2>
-                            <h4 class="job-title">Professor At {{prof.institute}}</h4>
+                            <h3 class="name"><a href="{{prof.homepage}}">{{prof.name}}</a></h2>
+                            <h4 class="job-title">{{prof.institute}}</h4>
                             <div class="bio">{{prof.interests}}</div>
                         </div>
+                  
                         <div class="card-footer">
                             <div class="stats">
                                 <div class="stat">
@@ -350,7 +362,34 @@
             {% endfor %}
         </div>
         <script>
+          new jBox('Tooltip', {
+            attach: '.tooll',
+            getTitle: 'data-jbox-title',
+            getContent: 'data-jbox-content',
+            width: '500px'
+          });
           document.getElementById("input_search").value = "{{placeholder}}";
         </script>
+        {% for i in array %}
+            {% for prof in i %}
+              <script>
+                
+                  $(document).ready(function() {
+                    new jBox('Modal', {
+                      attach: '#xyz{{prof.id}}',
+                      width: 500,
+                      title: 'Publications of {{prof.name}}',
+                      overlay: false,
+                      content: `<ol>{% for j in prof.acPublications%}<li><p>{{j}}<p></li>{% endfor %}</ol>`,
+                      draggable: 'title',
+                      repositionOnOpen: false,
+                      repositionOnContent: false
+                    });
+                  });
+                
+              </script>
+        {% endfor %}
+      {% endfor %}
+      
     </body>
 </html>
