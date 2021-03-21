@@ -46,7 +46,6 @@ def home_search(request):
     results_required = 25
     x = time.time()
     search_result = query_result(results_required,query)
-    print(search_result[0]) 
     array = []
     result_size = len(search_result)
     for i in range(result_size//3+1):
@@ -55,11 +54,11 @@ def home_search(request):
             if(i*3 + j >= result_size):
                 break
             if(search_result[i*3+j]["University_name"] == None):
-                search_result[i*3+j]["University_name"] == "NA"
-            
+                search_result[i*3+j]["University_name"] = "NA"
             temp.append(prof(i*3+j,search_result[i*3+j]["Name"], search_result[i*3+j]["img_src"],search_result[i*3+j]["University_name"][:30],", ".join(search_result[i*3+j]["Research_Interests"][:3])[:80],search_result[i*3+j]["H Index"],search_result[i*3+j]["I10 Index"],len(search_result[i*3+j]["Publications"]),search_result[i*3+j]["home_page_url"],search_result[i*3+j]["home_page_summary"],search_result[i*3+j]["Publications"]))
+            
         array.append(temp)
-    print(time.time()-x)
+    # print(time.time()-x)
     noResults = []
     if len(array[0])==0:
         noResults = [1]

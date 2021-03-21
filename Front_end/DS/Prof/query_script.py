@@ -10,6 +10,8 @@ def query_result(n, query):
 	query = list(query.split(" "))
 	for q in query:
 		q = q.lower()
+		if(q == ''):
+			continue
 		try:
 			for doc in indexFile[q]:
 				if doc['Scholar_ID'] in list_doc :

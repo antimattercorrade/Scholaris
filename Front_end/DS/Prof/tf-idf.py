@@ -3,6 +3,8 @@ import json
 import pickle
 import math
 
+
+
 # Clean string function
 def clean_string(text) :
 	text = (text.encode('ascii', 'ignore')).decode("utf-8")
@@ -16,6 +18,7 @@ def clean_string(text) :
 	return text
 
 def indexing():
+	max_h_index = 0 
 	df_data={}
 	tf_data={}
 	idf_data={}
@@ -34,6 +37,9 @@ def indexing():
 			continue
 
 	for row in prof_data:
+		if row["H Index"] == None:
+			row["H Index"] = 0
+		max_h_index = max(max_h_index, int(row["H Index"]))
 		tf={} 
 		#clean and list word
 		for data in row['Name'].split():
@@ -41,15 +47,34 @@ def indexing():
 			if clean_name in stopwords:
 				continue
 			if clean_name in tf :
-				tf[clean_name] += 1
+				tf[clean_name] += 3
 			else :
-				tf[clean_name] = 1
+				tf[clean_name] = 13
 
 			#df whole document frequency
 			if clean_name in df_data :
 				df_data[clean_name] += 1
 			else :
 				df_data[clean_name] = 1
+		univ_name  = row['University_name']
+		if(univ_name == None):
+			univ_name = ""
+		for data in univ_name.split():
+			if(data == ''):
+				continue
+			univ_name = clean_string(data)
+			if univ_name in stopwords:
+				continue
+			if univ_name in tf :
+				tf[univ_name] += 3
+			else :
+				tf[univ_name] = 13
+
+			#df whole document frequency
+			if univ_name in df_data :
+				df_data[univ_name] += 1
+			else :
+				df_data[univ_name] = 1
 
 		for data in row['Publications']:
 			clean_publications = clean_string(data[0])
@@ -74,9 +99,9 @@ def indexing():
 			list_word = clean_interests.split(" ")
 			for word in list_word:
 				if word in tf:
-					tf[word] +=1
+					tf[word] += 2
 				else:
-					tf[word] = 1
+					tf[word] = 3
 				# can also add weightage to the interest 
 				if word in df_data :
 					df_data[word] += 1
@@ -95,8 +120,9 @@ def indexing():
 			tf_value = 0
 			if word in tf_data[data['Scholar_ID']] :
 				tf_value = tf_data[data['Scholar_ID']][word]
-				
-			weight = tf_value * idf_data[word]
+			
+			alpha  = int(data['H Index'])/max_h_index
+			weight = (tf_value*idf_data[word])*alpha
 
 			doc = {
 				'Scholar_ID' : data['Scholar_ID'],
@@ -112,7 +138,6 @@ def indexing():
 				'home_page_summary' : data['home_page_summary'],
 				'score' : weight
 			}
-
 
 			if doc['score'] != 0 :
 				list_doc.append(doc)	
