@@ -1,13 +1,7 @@
-# from Prof import query_script
 from django.http.response import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-
-from inspect import getsourcefile
-import os.path
-import sys
-import pathlib
-from functools import cmp_to_key
+import regex as re
 
 def compare_research(a,b):
     if( a["score_research"]  == b["score_research"]):
@@ -17,33 +11,53 @@ def compare_research(a,b):
 import pickle
 
 indexFile = pickle.load(open("./DS/Prof/index_file", 'rb'))
-    # indexFile = pickle.load(indexdb)
 
 choice = "default"
 
+def clean_string(text) :
+	text = (text.encode('ascii', 'ignore')).decode("utf-8")
+	text = re.sub("&.*?;", "", text)
+	text = re.sub(">", "", text)    
+	text = re.sub("[\]\|\[\@\,\$\%\*\&\\\(\)\":]", "", text)
+	text = re.sub("-", " ", text)
+	text = re.sub("\.+", "", text)
+	text = re.sub("^\s+","" ,text)
+	text = text.lower()
+	return text
 
 def query_result(n, query):
 
     list_doc = {}
-    query = list(query.split(" "))
-    for q in query:
-        q = q.lower()
-        if(q == ''):
-            continue
-    
-        for doc in indexFile[q]:
-            if doc['Scholar_ID'] in list_doc:
-                list_doc[doc['Scholar_ID']]['score'] += doc['score']
 
-                if(doc['score_name'] != -1):
-                    list_doc[doc['Scholar_ID']]['score_name'] += doc['score_name']
-                if(doc['score_univ'] != -1):
-                    list_doc[doc['Scholar_ID']]['score_univ'] += doc['score_univ']
-                if(doc['score_research'] != -1):
+    if( choice != "Interests"):
+        query = list(query.split(" "))
+        for q in query:
+            q = q.lower()
+            if(q == '' or q not in indexFile):
+                continue
+            for doc in indexFile[q]:
+                if doc['Scholar_ID'] in list_doc:
+                    list_doc[doc['Scholar_ID']]['score'] += doc['score']
+
+                    if(doc['score_name'] != -1):
+                        list_doc[doc['Scholar_ID']]['score_name'] += doc['score_name']
+                    if(doc['score_univ'] != -1):
+                        list_doc[doc['Scholar_ID']]['score_univ'] += doc['score_univ']
+                    # if(doc['score_research'] != -1):
+                    #     list_doc[doc['Scholar_ID']]['score_research'] += doc['score_research']
+                else :
+                    scholar_id = doc['Scholar_ID']
+                    list_doc[scholar_id] = doc.copy()
+    else :
+        query = query.lower()
+        query = clean_string(query)
+        # print(query)
+        if(query in indexFile):
+            for doc in indexFile[query]:
+                if(doc['Scholar_ID'] in list_doc and doc['score_research'] != -1):
                     list_doc[doc['Scholar_ID']]['score_research'] += doc['score_research']
-            else :
-                scholar_id = doc['Scholar_ID']
-                list_doc[scholar_id] = doc.copy()
+        
+
 
     list_data=[]
     

@@ -146,16 +146,27 @@ def indexing():
 				else :
 					df_data[word] = 1
 
-				# Research Interest Score
-				if word in tf_research:
-					tf_research[word] += 1
-				else:
-					tf_research[word] = 1
-				# can also add weightage to the interest 
-				if word in df_data_research :
-					df_data_research[word] += 1
-				else :
-					df_data_research[word] = 1
+			
+			# Research Interest Score
+			if clean_interests in tf:
+				tf[clean_interests] += 1
+			else:
+				tf[clean_interests] = 1
+			# can also add weightage to the interest 
+			if clean_interests in df_data :
+				df_data[clean_interests] += 1
+			else :
+				df_data[clean_interests] = 1
+
+			if clean_interests in tf_research:
+				tf_research[clean_interests] += 1
+			else:
+				tf_research[clean_interests] = 1
+			# can also add weightage to the interest 
+			if clean_interests in df_data_research :
+				df_data_research[clean_interests] += 1
+			else :
+				df_data_research[clean_interests] = 1
 
 		tf_data[row['Scholar_ID']] = tf.copy()
 		tf_data_research[row['Scholar_ID']] = tf_research.copy()
@@ -221,7 +232,6 @@ def indexing():
 				'score_research':weight_research,
 				'score_univ': weight_univ
 			}
-
 			if doc['score'] != 0 :
 				list_doc.append(doc)	
 			
