@@ -33,7 +33,7 @@ def query_result(n, query):
         query = list(query.split(" "))
         for q in query:
             q = q.lower()
-            if(q == '' or q not in indexFile):
+            if(q == '' or q not in indexFile.keys()):
                 continue
             for doc in indexFile[q]:
                 if doc['Scholar_ID'] in list_doc:
@@ -43,19 +43,20 @@ def query_result(n, query):
                         list_doc[doc['Scholar_ID']]['score_name'] += doc['score_name']
                     if(doc['score_univ'] != -1):
                         list_doc[doc['Scholar_ID']]['score_univ'] += doc['score_univ']
-                    # if(doc['score_research'] != -1):
-                    #     list_doc[doc['Scholar_ID']]['score_research'] += doc['score_research']
                 else :
                     scholar_id = doc['Scholar_ID']
                     list_doc[scholar_id] = doc.copy()
     else :
         query = query.lower()
         query = clean_string(query)
-        # print(query)
-        if(query in indexFile):
+        
+        if(query in indexFile.keys()):
             for doc in indexFile[query]:
                 if(doc['Scholar_ID'] in list_doc and doc['score_research'] != -1):
                     list_doc[doc['Scholar_ID']]['score_research'] += doc['score_research']
+                else :
+                    scholar_id = doc['Scholar_ID']
+                    list_doc[scholar_id] = doc.copy()
         
 
 

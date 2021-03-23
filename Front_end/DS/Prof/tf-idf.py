@@ -187,6 +187,8 @@ def indexing():
 		idf_data_univ[row] = 1 + math.log10(len(tf_data_univ)/df_data_univ[row])
 
 	for word in df_data:
+		# if word == 'data mining':
+		# 	print(word)
 		list_doc = []
 		for data in prof_data:
 			tf_value = 0
