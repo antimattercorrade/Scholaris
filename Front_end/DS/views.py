@@ -178,6 +178,11 @@ def home_search(request):
     global choice_num
     return render(request, "search.html",{"array":array,"placeholder":query,"noResults":noResults, "choice":choice_num})
 
+from quoters import Quote 
+@csrf_exempt
+def print_quotes(request):
+    return render(request, "index.html",{"quote":Quote.print()})
+
 
 @csrf_exempt
 def pref(request):
