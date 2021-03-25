@@ -22,4 +22,5 @@ urlpatterns = [
     path('index.html', views.home),
     path("search_home", views.home_search, name="search_home"),
     path("preference", views.pref, name="preference"),
+    path("publi", views.publi, name="publi"),
 ]

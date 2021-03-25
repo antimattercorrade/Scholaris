@@ -2,6 +2,7 @@ from django.http.response import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 import regex as re
+from datetime import date
 
 def compare_research(a,b):
     if( a["score_research"]  == b["score_research"]):
@@ -13,6 +14,12 @@ import pickle
 indexFile = pickle.load(open("./DS/Prof/index_file", 'rb'))
 
 choice = "default"
+
+publications = 5
+
+YEAR = int(date.today().year)
+
+choice_num = 4
 
 def clean_string(text) :
 	text = (text.encode('ascii', 'ignore')).decode("utf-8")
@@ -119,7 +126,8 @@ class publication:
         self.year = year
 
 class prof:
-    def __init__(self,id,name,imageURL,institute,interests,hIndex,i10Index,publications,homepage,homepage_summary,acPublications):
+    def __init__(self,id,name,imageURL,institute,interests,hIndex,i10Index,publicatio,homepage,homepage_summary,acPublications,allInterest):
+        global publications
         self.id = id
         self.name = name
         self.imageURL = imageURL
@@ -127,14 +135,17 @@ class prof:
         self.interests = interests
         self.hIndex = hIndex
         self.i10Index = i10Index 
-        self.publications = publications
         self.homepage = homepage
+        self.allInterest = allInterest
         self.summary = homepage_summary
         if homepage_summary==None:
             self.summary = "Summary Not Available!"
         actual = []
         for i in acPublications:
-            actual.append(publication(i[0],i[1],i[2]))
+            if YEAR-int(i[2])<=publications:
+                print(int(i[2]),YEAR, publications)
+                actual.append(publication(i[0],i[1],i[2]))
+        self.publications = len(actual)
         # pub = ""
         # for i in actual:
         #     pub += "<p>"+i+"</p><br>"
@@ -157,26 +168,44 @@ def home_search(request):
                 break
             if(search_result[i*3+j]["University_name"] == None or search_result[i*3+j]["University_name"] == 'Homepage'):
                 search_result[i*3+j]["University_name"] = "NA"
-            temp.append(prof(i*3+j,search_result[i*3+j]["Name"], search_result[i*3+j]["img_src"],search_result[i*3+j]["University_name"][:30],", ".join(search_result[i*3+j]["Research_Interests"][:3])[:80],search_result[i*3+j]["H Index"],search_result[i*3+j]["I10 Index"],len(search_result[i*3+j]["Publications"]),search_result[i*3+j]["home_page_url"],search_result[i*3+j]["home_page_summary"],search_result[i*3+j]["Publications"]))
+            temp.append(prof(i*3+j,search_result[i*3+j]["Name"], search_result[i*3+j]["img_src"],search_result[i*3+j]["University_name"][:30],", ".join(search_result[i*3+j]["Research_Interests"][:3])[:80],search_result[i*3+j]["H Index"],search_result[i*3+j]["I10 Index"],len(search_result[i*3+j]["Publications"]),search_result[i*3+j]["home_page_url"],search_result[i*3+j]["home_page_summary"],search_result[i*3+j]["Publications"],search_result[i*3+j]["Research_Interests"]))
             
         array.append(temp)
     # print(time.time()-x)
     noResults = []
     if len(array[0])==0:
         noResults = [1]
-    return render(request, "search.html",{"array":array,"placeholder":query,"noResults":noResults})
+    global choice_num
+    return render(request, "search.html",{"array":array,"placeholder":query,"noResults":noResults, "choice":choice_num})
 
 
 @csrf_exempt
 def pref(request):
     # print(request.body.decode())
     global choice 
+    global choice_num
     if(request.body.decode() == 'prof_name'):
         choice = 'prof_name'
+        choice_num = 1
     elif(request.body.decode() == 'Interests'):
         choice = 'Interests'
+        choice_num = 2
     elif(request.body.decode() == 'university_name'):
         choice = 'university_name'
+        choice_num = 3
     else:
         choice = 'default'
+        choice_num = 4
+    return JsonResponse({1:"done"})
+
+
+@csrf_exempt
+def publi(request):
+    global publications
+    if(request.body.decode() == '1'):
+        publications = 1
+    elif(request.body.decode() == '2'):
+        publications = 2
+    elif(request.body.decode() == '5'):
+        publications = 5
     return JsonResponse({1:"done"})
