@@ -143,7 +143,6 @@ class prof:
         actual = []
         for i in acPublications:
             if YEAR-int(i[2])<=publications:
-                print(int(i[2]),YEAR, publications)
                 actual.append(publication(i[0],i[1],i[2]))
         self.publications = len(actual)
         # pub = ""
@@ -176,7 +175,7 @@ def home_search(request):
     if len(array[0])==0:
         noResults = [1]
     global choice_num
-    return render(request, "search.html",{"array":array,"placeholder":query,"noResults":noResults, "choice":choice_num})
+    return render(request, "search.html",{"array":array,"placeholder":query,"noResults":noResults, "choice":choice_num, "publi":publications})
 
 from quoters import Quote 
 @csrf_exempt
