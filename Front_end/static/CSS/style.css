@@ -1,23 +1,4 @@
-ul {
-  list-style-type: none;
-  overflow: hidden;
-}
 
-li {
-  float: right;
-}
-
-li a {
-  color: #000;
-  display: block;
-  text-align: center;
-  padding: 10px 10px;
-  text-decoration: none;
-  font-size:14px;
-}
-li a:hover {
-  text-decoration: underline;
-}
 .grid{
   height:23px;
   position:relative;

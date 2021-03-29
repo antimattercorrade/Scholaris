@@ -1,7 +1,7 @@
 from django.http.response import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
-import regex as re
+import re
 from datetime import date
 
 def compare_research(a,b):
