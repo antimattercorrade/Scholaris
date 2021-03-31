@@ -122,38 +122,41 @@ li a:hover {
           
       </div> 
       <script> 
-        // function run_one_time(){
-          var theme, prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-          if (prefersDarkScheme.matches)
-              theme = document.body.classList.contains("light-mode") ? "light" : "dark";
-          else
-              theme = document.body.classList.contains("dark-mode") ? "dark" : "light";
-          localStorage.setItem("theme", theme);
-          localStorage.setItem("curr_theme", theme);
-          if(theme == "light"){
-            document.getElementById("changecolor").style.color = "#000000";
+        var checkTheme = localStorage.getItem("theme");
+          if(checkTheme == "dark"){
+             localStorage.setItem("theme", "dark");
+             document.getElementById("changecolor").style.color = "white";
+             if (document.body.classList.contains("light-mode")) {
+                document.body.classList.toggle("light-mode");
+             }
           }
           else {
-            document.getElementById("changecolor").style.color = "white";
+            localStorage.setItem("theme", "light");
+            document.getElementById("changecolor").style.color = "#000000";
+            if ( !document.body.classList.contains("light-mode")) {
+                document.body.classList.toggle("light-mode");
+             }
           }
-        // }
-        // window.onload = run_one_time;
+          
+        
         function toggle_mode() {
           var currentTheme = localStorage.getItem("theme");
+          // console.log(currentTheme);
           if (currentTheme == "dark"){  
-              document.body.classList.toggle("light-mode");
+            localStorage.setItem("theme", "light");
+            if ( !document.body.classList.contains("light-mode")) {
+                document.body.classList.toggle("light-mode");
+             }
+             document.getElementById("changecolor").style.color = "#000000";
+              
           }
           else {
-              document.body.classList.toggle("dark-mode");
-          }
-          var theme = localStorage.getItem("curr_theme"); 
-          if(theme == "dark"){
-            localStorage.setItem("curr_theme", "light");
-            document.getElementById("changecolor").style.color = "#000000";
-          }
-          else {
-            localStorage.setItem("curr_theme", "dark");
-            document.getElementById("changecolor").style.color = "white";
+              localStorage.setItem("theme", "dark");
+              if (document.body.classList.contains("light-mode")) {
+                  document.body.classList.toggle("light-mode");
+              }
+              document.getElementById("changecolor").style.color = "white";
+              
           }
       }
       </script>
@@ -169,7 +172,7 @@ li a:hover {
       </div>
     </label>
 
-
+    <div><p>{{quote}}</p></div>
 <script>
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,

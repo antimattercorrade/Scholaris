@@ -14,6 +14,7 @@
         <link href="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.2.0/dist/jBox.all.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">        
         <!-- <link rel = "stylesheet" href = "{% static 'CSS/style.css' %}"> -->
+        <link rel = "stylesheet" href = "{% static 'CSS/dark.css' %}">
 
         <style>
               @import "{% static 'CSS/style.css' %}";
@@ -249,7 +250,7 @@
           text-align: center;
           border-left: 1px solid #EBEBEB;
         }
-        .stat .label{
+        .stat .labels{
           display: block;
           text-transform: uppercase;
           font-weight: 300;
@@ -448,15 +449,15 @@
                         <div class="card-footer">
                             <div class="stats">
                                 <div class="stat">
-                                  <span class="label">H-Index</span>
+                                  <span class="labels">H-Index</span>
                                   <span class="value">{{prof.hIndex}}</span>
                                 </div>
                                 <div class="stat">
-                                  <span class="label">i10-Index</span>
+                                  <span class="labels">i10-Index</span>
                                   <span class="value">{{prof.i10Index}}</span>
                                 </div>
                                 <div class="stat">
-                                  <span class="label">Publications</span>
+                                  <span class="labels">Publications</span>
                                   <span class="value">{{prof.publications}}</span>
                                 </div>
                             </div>
@@ -525,7 +526,11 @@
             {% for prof in i %}
               <script>
                   $(document).ready(function() {
+                    currentTheme = localStorage.getItem("theme");
+                    var temp = "";
+                    if(currentTheme == "dark") temp = "TooltipDark";
                     new jBox('Modal', {
+                      id:'pub',
                       attach: '#xyz{{prof.id}}',
                       width: 600,
                       title: 'Publications of {{prof.name}}',
@@ -533,53 +538,25 @@
                       content: `<ol>{% for j in prof.acPublications%}<li><div class="row"><div class="col-md-10"><p>{{j.content}}<p></div><div class="col-md-2"><p>{{j.year}}<p></div></div></li>{% endfor %}</ol>`,
                       draggable: 'title',
                       repositionOnOpen: false,
-                      repositionOnContent: false
-                    });       
-                    funct();             
+                      repositionOnContent: false,
+                      theme: temp
+                    });  
                   });
                   
               </script>
         {% endfor %}
       {% endfor %}
       <script>
-        function funct(){
-          function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-          }
-
-          async function demo() {
-            console.log('Taking a break...');
-            await sleep(5000);
-            console.log('Two seconds later, showing sleep in a loop...');
-
-            // Sleep in loop
-            for (let i = 0; i < 5; i++) {
-              if (i === 3)
-                await sleep(2000);
-              console.log(i);
-            }
-          }
-          // demo();
-          
-          console.log(document.getElementsByClassName("jBox-content").length)
-          var x = document.getElementsByClassName("jBox-content");
-            for(var p=0;p<x.length;p++){
-              x[p].style.backgroundColor = "#2b2e4a";
-            }
-            var x = document.getElementsByClassName("jBox-title");
-            for(var p=0;p<x.length;p++){
-              x[p].style.backgroundColor = "black";
-              console.log(x[p].style.backgroundColor);
-            }
-            console.log(document.getElementsByClassName("jBox-title")[0].style.backgroundColor);
-        }
-      </script>
-      <script>
+        currentTheme = localStorage.getItem("theme");
+        var temp = "";
+        if(currentTheme == "dark") temp = "TooltipDark";  
         new jBox('Tooltip', {
+          id: 'pub',
           attach: '.tooll',
           getTitle: 'data-jbox-title',
           getContent: 'data-jbox-content',
-          width: '500px'
+          width: '500px',
+          theme: temp
         });
         /* When the user clicks on the button,
         toggle between hiding and showing the dropdown content */
@@ -605,22 +582,48 @@
 
  
         <script> 
-          // function run_one_time(){
-            var theme, prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-            // theme = localStorage.getItem("curr_theme");
-            // console.log(theme);
-            if (prefersDarkScheme.matches)
-                theme = document.body.classList.contains("light-mode") ? "light" : "dark";
-            else
-                theme = document.body.classList.contains("dark-mode") ? "dark" : "light";
-            localStorage.setItem("theme", theme);
-            localStorage.setItem("curr_theme", theme);
-            if(theme == "light"){
+            var checkTheme = localStorage.getItem("theme");
+            if(checkTheme == "dark"){
+              localStorage.setItem("theme", "dark");
+              if (document.body.classList.contains("light-mode")) {
+                document.body.classList.toggle("light-mode");
+              }
+
+              document.getElementById("input_search").style.color = "white";
+              document.getElementById("row-change").style.color = "white";
+              document.getElementById("top-bar").style.backgroundColor = "#2b2e4a";
+              document.getElementById("multi-select").style.color = "white";
+              var labels = document.getElementsByClassName("labels");
+              for(var i =0; i < labels.length; i++){
+                labels.item(i).style.color="white"
+              }
+              var jobtitles = document.getElementsByClassName("job-title");
+              for(var i =0; i < jobtitles.length; i++){
+                jobtitles.item(i).style.color="white"
+              }
+              var biotool = document.getElementsByClassName("bio tooll");
+              for(var i =0; i < biotool.length; i++){
+                biotool.item(i).style.color="white"
+              }
+              var cards = document.getElementsByClassName("card");
+              for (var i= 0; i < cards.length; i++){
+                cards.item(i).style.backgroundColor="#69779b";
+              }   
+
+              
+            }
+            else {
+              localStorage.setItem("theme", "light");
+              if ( !document.body.classList.contains("light-mode")) {
+                document.body.classList.toggle("light-mode");
+              }
+
               document.getElementById("input_search").style.color = "#000000";
               document.getElementById("row-change").style.color = "#000000";
               document.getElementById("multi-select").style.color = "#000000";
               document.getElementById("top-bar").style.backgroundColor = "white";
-              var labels = document.getElementsByClassName("label");
+              
+              var labels = document.getElementsByClassName("labels");
               for(var i =0; i < labels.length; i++){
                 labels.item(i).style.color="#95989A"
               }
@@ -636,42 +639,16 @@
               for (var i= 0; i < cards.length; i++){
                 cards.item(i).style.backgroundColor="white";
               }
+
             }
-            else {
-              document.getElementById("input_search").style.color = "white";
-              document.getElementById("row-change").style.color = "white";
-              document.getElementById("top-bar").style.backgroundColor = "#2b2e4a";
-              document.getElementById("multi-select").style.color = "white";
-              var labels = document.getElementsByClassName("label");
-              for(var i =0; i < labels.length; i++){
-                labels.item(i).style.color="white"
-              }
-              var jobtitles = document.getElementsByClassName("job-title");
-              for(var i =0; i < jobtitles.length; i++){
-                jobtitles.item(i).style.color="white"
-              }
-              var biotool = document.getElementsByClassName("bio tooll");
-              for(var i =0; i < biotool.length; i++){
-                biotool.item(i).style.color="white"
-              }
-              var cards = document.getElementsByClassName("card");
-              for (var i= 0; i < cards.length; i++){
-                cards.item(i).style.backgroundColor="#69779b";
-              }
-            }
-          // }
-          // window.onload = run_one_time;
           function toggle_mode() {
             var currentTheme = localStorage.getItem("theme");
-            if (currentTheme == "dark"){  
+            // console.log(currentTheme);
+            if(currentTheme == "dark"){
+              localStorage.setItem("theme", "light");
+              if ( !document.body.classList.contains("light-mode")) {
                 document.body.classList.toggle("light-mode");
-            }
-            else {
-                document.body.classList.toggle("dark-mode");
-            }
-            var theme = localStorage.getItem("curr_theme"); 
-            if(theme == "dark"){
-              localStorage.setItem("curr_theme", "light");
+              }
               document.getElementById("input_search").style.color = "#000000";
               document.getElementById("row-change").style.color = "#000000";
               document.getElementById("multi-select").style.color = "#000000";
@@ -681,7 +658,7 @@
               for (var i= 0; i < cards.length; i++){
                 cards.item(i).style.backgroundColor="white";
               }
-              var labels = document.getElementsByClassName("label");
+              var labels = document.getElementsByClassName("labels");
               for(var i =0; i < labels.length; i++){
                 labels.item(i).style.color="#95989A"
               }
@@ -693,18 +670,31 @@
               for(var i =0; i < jobtitles.length; i++){
                 jobtitles.item(i).style.color="#95989A"
               }
+
+              var x = document.getElementsByClassName("jBox-content");
+          
+              for(var p=0;p<x.length;p++){
+                x.item(p).style.backgroundColor = "white";
+                x.item(p).style.color = "black"
+              }
+              var x = document.getElementsByClassName("jBox-title");
+              for(var p=0;p<x.length;p++){
+                x.item(p).style.backgroundColor = "white";
+                x.item(p).style.color = "black"
+                
+              }
+
             }
             else {
-              localStorage.setItem("curr_theme", "dark");
-              // document.getElementsByClassName("jBox-content").backgroundColor="black";
-              // console.log(document.getElementsByClassName("jBox-content").backgroundColor);
-              
-              // console.log(document.getElementsByClassName("jBox-title jBox-draggable").backgroundColor);
+              localStorage.setItem("theme", "dark");
+              if (document.body.classList.contains("light-mode")) {
+                  document.body.classList.toggle("light-mode");
+              }
               document.getElementById("input_search").style.color = "white";
               document.getElementById("row-change").style.color = "white";
               document.getElementById("top-bar").style.backgroundColor = "#2b2e4a";
               document.getElementById("multi-select").style.color = "white";
-              var labels = document.getElementsByClassName("label");
+              var labels = document.getElementsByClassName("labels");
               for(var i =0; i < labels.length; i++){
                 labels.item(i).style.color="white"
               }
@@ -720,7 +710,19 @@
               for (var i= 0; i < cards.length; i++){
                 cards.item(i).style.backgroundColor="#69779b";
               }
-              
+
+              var x = document.getElementsByClassName("jBox-content");
+          
+              for(var p=0;p<x.length;p++){
+                x.item(p).style.backgroundColor = "#2b2e4a";
+                x.item(p).style.color = "white"
+              }
+              var x = document.getElementsByClassName("jBox-title");
+              for(var p=0;p<x.length;p++){
+                x.item(p).style.backgroundColor = "#2b2e4a";
+                x.item(p).style.color = "white"
+              }
+
             }
         }
         </script>

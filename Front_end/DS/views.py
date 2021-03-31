@@ -12,7 +12,7 @@ def compare_research(a,b):
 import pickle
 
 indexFile = pickle.load(open("./DS/Prof/index_file", 'rb'))
-
+print(len(indexFile.keys()))
 choice = "default"
 
 publications = 5
@@ -116,8 +116,9 @@ def query_result(n, query):
 
     return res
 
+from quoters import Quote 
 def home(request):
-    return render(request,"index.html")
+    return render(request,"index.html",{"quote":Quote.print()})
 
 class publication:
     def __init__(self,content,link,year):
@@ -179,8 +180,6 @@ def home_search(request):
 
 from quoters import Quote 
 @csrf_exempt
-def print_quotes(request):
-    return render(request, "index.html",{"quote":Quote.print()})
 
 
 @csrf_exempt

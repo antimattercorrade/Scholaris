@@ -22,5 +22,4 @@ urlpatterns = [
     path("search_home", views.home_search, name="search_home"),
     path("preference", views.pref, name="preference"),
     path("publi", views.publi, name="publi"),
-    path("quote", views.print_quotes, name = "quote")
 ]
