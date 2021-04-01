@@ -1,7 +1,7 @@
 
 /* Container */
 
-#pub.jBox-TooltipDark .jBox-container {
+#pub .jBox-TooltipDark .jBox-container {
 	border-radius: 3px;
 	background: #2b2e4a;
 	color:white;
@@ -10,33 +10,33 @@
 
 /* Pointer */
 
-#pub.jBox-TooltipDark .jBox-pointer:after {
+#pub .jBox-TooltipDark .jBox-pointer:after {
 	background: #2b2e4a;
 }
 
 /* Close button */
 
-#pub.jBox-TooltipDark .jBox-closeButton {
+#pub .jBox-TooltipDark .jBox-closeButton {
 	background: #2b2e4a;
 }
 
-#pub.jBox-TooltipDark.jBox-closeButton-box:before {
+#pub .jBox-TooltipDark .jBox-closeButton-box:before {
 	box-shadow: 0 0 6px rgba(0, 0, 0, .4);
 }
 
-#pub.jBox-TooltipDark .jBox-title{
+#pub .jBox-TooltipDark .jBox-title{
   background: #3f478f; 
   color: white;
 }
 
-.jBox-TooltipDark.jBox-closeButton-box .jBox-closeButton path {
+.jBox-TooltipDark .jBox-closeButton-box .jBox-closeButton path {
 	fill: #d2d4d6;
 }
 
-.jBox-TooltipDark.jBox-closeButton-box .jBox-closeButton:hover path {
+.jBox-TooltipDark .jBox-closeButton-box .jBox-closeButton:hover path {
 	fill: #fff;
 }
 
-.jBox-TooltipDark.jBox-closeButton-box .jBox-closeButton:active path {
+.jBox-TooltipDark .jBox-closeButton-box .jBox-closeButton:active path {
 	fill: #b2b4b6;
 }
