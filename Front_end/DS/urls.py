@@ -22,4 +22,9 @@ urlpatterns = [
     path("search_home", views.home_search, name="search_home"),
     path("preference", views.pref, name="preference"),
     path("publi", views.publi, name="publi"),
+    path("register", views.register, name="register"),
+    path("reg", views.reg, name="reg"),
+    path("login", views.login, name="login"),
+    path("logout", views.logout, name="logout"),
+    path("queries", views.queries, name="queries"),
 ]

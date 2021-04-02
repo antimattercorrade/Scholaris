@@ -1,6 +1,33 @@
 
 /* Container */
 
+.jBox-TooltipDark .jBox-container {
+	border-radius: 3px;
+	background: #2b2e4a;
+	color:white;
+	box-shadow: 0 0 6px rgba(0, 0, 0, .4);
+}
+
+/* Pointer */
+
+.jBox-TooltipDark .jBox-pointer:after {
+	background: #2b2e4a;
+}
+
+/* Close button */
+
+.jBox-TooltipDark .jBox-closeButton {
+	background: #2b2e4a;
+}
+
+.jBox-TooltipDark.jBox-closeButton-box:before {
+	box-shadow: 0 0 6px rgba(0, 0, 0, .4);
+}
+
+.jBox-TooltipDark .jBox-title{
+  background: #3f478f; 
+  color: white;
+}
 #pub.jBox-TooltipDark .jBox-container {
 	border-radius: 3px;
 	background: #2b2e4a;

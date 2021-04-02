@@ -1,6 +1,8 @@
 from django.http.response import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.models import User, auth
+from user.models import history, state
 import re
 from datetime import date
 
@@ -12,7 +14,7 @@ def compare_research(a,b):
 import pickle
 
 indexFile = pickle.load(open("./DS/Prof/index_file", 'rb'))
-print(len(indexFile.keys()))
+words = indexFile.keys()
 choice = "default"
 
 publications = 5
@@ -116,9 +118,9 @@ def query_result(n, query):
 
     return res
 
-from quoters import Quote 
+# from quoters import Quote 
 def home(request):
-    return render(request,"index.html",{"quote":Quote.print()})
+    return render(request,"index.html")
 
 class publication:
     def __init__(self,content,link,year):
@@ -156,6 +158,12 @@ import time
 @csrf_exempt
 def home_search(request):
     query = request.POST["search"]
+    if request.user.is_authenticated:
+        all = history.objects.filter(username=request.user.username,history__startswith=query)
+        print(len(all))
+        if len(all)==0:
+            hist = history(username=request.user.username,history=query)
+            hist.save()
     results_required = 25
     x = time.time()
     search_result = query_result(results_required,query)
@@ -177,9 +185,6 @@ def home_search(request):
         noResults = [1]
     global choice_num
     return render(request, "search.html",{"array":array,"placeholder":query,"noResults":noResults, "choice":choice_num, "publi":publications})
-
-from quoters import Quote 
-@csrf_exempt
 
 
 @csrf_exempt
@@ -212,3 +217,43 @@ def publi(request):
     elif(request.body.decode() == '5'):
         publications = 5
     return JsonResponse({1:"done"})
+
+
+def register(request):
+    return render(request,"register.html")
+
+def reg(request):
+    name = request.POST["name"]
+    email = request.POST["email"]
+    password = request.POST["password"]
+    user = User.objects.create_user(username=name,password=password,email=email)
+    user.save()
+    print(user)
+    return redirect("index.html")
+
+def login(request):
+    name = request.POST["name"]
+    password = request.POST["password"]
+    user = auth.authenticate(username=name,password=password)
+    if user is not None:
+        auth.login(request,user)
+        return redirect("index.html")
+    else:
+        return redirect("register")
+    
+def logout(request):
+    auth.logout(request)
+    return redirect("index.html")
+
+@csrf_exempt
+def queries(request):
+    if request.user.is_authenticated:
+        quer = []
+        print(request.body.decode())
+        all = history.objects.filter(username=request.user.username,history__startswith=request.body.decode())
+        for i in all:
+            quer.append(i.history)
+        return JsonResponse({'list':quer})
+    else:
+        return JsonResponse({'list':["Machine Learning"]})
+    
