@@ -118,9 +118,9 @@ def query_result(n, query):
 
     return res
 
-from quoters import Quote 
+# from quoters import Quote 
 def home(request):
-    return render(request,"index.html",{"quote":Quote.print()})
+    return render(request,"index.html")
 
 class publication:
     def __init__(self,content,link,year):

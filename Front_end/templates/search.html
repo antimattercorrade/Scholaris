@@ -375,10 +375,10 @@
                           </script>
                         </div>
                       </form>
-                      <form action="search_home" method="post" id = "meme">{% csrf_token %}
+                      <!-- <form action="search_home" method="post" id = "meme">{% csrf_token %}
                         
 
-                      </form>
+                      </form> -->
                     </div>
                 </div>
                 
@@ -452,6 +452,22 @@
             </div>
         </div>
         
+        <script>
+          function queryBackend(name,request){
+            const xhr = new XMLHttpRequest();
+            xhr.open("post",request,true);
+            xhr.getResponseHeader("Content-type","application/txt")
+            xhr.send(name)
+            xhr.onload = function(){
+              if(this.status==200){
+                console.log(this.responseText);
+                if(request=="publi"){
+                  location.reload();
+                }
+              }
+            }
+          }
+        </script>
         <div class="results">
             {% for i in noResults%}
               <img src="https://cdn.dribbble.com/users/1554526/screenshots/3399669/no_results_found.png" style="display: block;margin-left: auto;margin-right: auto;width: 50%;">
@@ -461,7 +477,7 @@
               {% for prof in i %}
                 <div class="col-md-4" >
                     <div class="card" >
-                        <div class="card-header tooll" onclick="funct('xyz{{prof.id}}');" id="xyz{{prof.id}}" data-jbox-title="Summary" data-jbox-content='{{prof.summary}}' style="background-color:#95989A;background-image: url({{prof.imageURL}}),url(https://vcunited.club/wp-content/uploads/2020/01/No-image-available-2.jpg);background-position: 0px 0px; height:45%;width:45%;display: block;margin-left: auto;margin-right: auto;width: 58%;">
+                        <div class="card-header tooll" id="xyz{{prof.id}}" data-jbox-title="Summary" data-jbox-content='{{prof.summary}}' style="background-color:#95989A;background-image: url({{prof.imageURL}}),url(https://vcunited.club/wp-content/uploads/2020/01/No-image-available-2.jpg);background-position: 0px 0px; height:45%;width:45%;display: block;margin-left: auto;margin-right: auto;width: 58%;">
                         </div>
                         <div class="card-body">
                             <h3 class="name"><a href="{{prof.homepage}}">{{prof.name}}</a></h2>
@@ -516,22 +532,7 @@
         </script>
         {%endifequal%}
 
-        <script>
-          function queryBackend(name,request){
-            const xhr = new XMLHttpRequest();
-            xhr.open("post",request,true);
-            xhr.getResponseHeader("Content-type","application/txt")
-            xhr.send(name)
-            xhr.onload = function(){
-              if(this.status==200){
-                console.log(this.responseText);
-                if(request=="publi"){
-                  location.reload();
-                }
-              }
-            }
-          }
-        </script>
+        
         <script>
           new jBox('Tooltip', {
             attach: '.tooll',
@@ -553,6 +554,7 @@
                     var temp = "";
                     if(currentTheme == "dark") temp = "TooltipDark";
                     new jBox('Modal', {
+                      id: 'pub',
                       attach: '#xyz{{prof.id}}',
                       width: 600,
                       title: 'Publications of {{prof.name}}',
@@ -573,7 +575,7 @@
         var temp = "";
         if(currentTheme == "dark") temp = "TooltipDark";  
         new jBox('Tooltip', {
-          id: 'pub',
+          id: 'pub2',
           attach: '.tooll',
           getTitle: 'data-jbox-title',
           getContent: 'data-jbox-content',
@@ -611,7 +613,7 @@
                 document.body.classList.toggle("light-mode");
               }
 
-              document.getElementById("input_search").style.color = "white";
+              document.getElementById("changecolor").style.color = "white";
               document.getElementById("row-change").style.color = "white";
               document.getElementById("top-bar").style.backgroundColor = "#2b2e4a";
               document.getElementById("multi-select").style.color = "white";
@@ -640,7 +642,7 @@
                 document.body.classList.toggle("light-mode");
               }
 
-              document.getElementById("input_search").style.color = "#000000";
+              document.getElementById("changecolor").style.color = "#000000";
               document.getElementById("row-change").style.color = "#000000";
               document.getElementById("multi-select").style.color = "#000000";
               document.getElementById("top-bar").style.backgroundColor = "white";
@@ -671,7 +673,7 @@
               if ( !document.body.classList.contains("light-mode")) {
                 document.body.classList.toggle("light-mode");
               }
-              document.getElementById("input_search").style.color = "#000000";
+              document.getElementById("changecolor").style.color = "#000000";
               document.getElementById("row-change").style.color = "#000000";
               document.getElementById("multi-select").style.color = "#000000";
               document.getElementById("top-bar").style.backgroundColor = "white";
@@ -712,7 +714,7 @@
               if (document.body.classList.contains("light-mode")) {
                   document.body.classList.toggle("light-mode");
               }
-              document.getElementById("input_search").style.color = "white";
+              document.getElementById("changecolor").style.color = "white";
               document.getElementById("row-change").style.color = "white";
               document.getElementById("top-bar").style.backgroundColor = "#2b2e4a";
               document.getElementById("multi-select").style.color = "white";
