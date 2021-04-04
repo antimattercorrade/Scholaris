@@ -58,14 +58,10 @@ def query_result(n, query):
     else :
         query = query.lower()
         query = clean_string(query)
-        
         if(query in indexFile.keys()):
             for doc in indexFile[query]:
-                if(doc['Scholar_ID'] in list_doc and doc['score_research'] != -1):
-                    list_doc[doc['Scholar_ID']]['score_research'] += doc['score_research']
-                else :
-                    scholar_id = doc['Scholar_ID']
-                    list_doc[scholar_id] = doc.copy()
+                scholar_id = doc['Scholar_ID']
+                list_doc[scholar_id] = doc.copy()
         
 
 
@@ -256,4 +252,5 @@ def queries(request):
         return JsonResponse({'list':quer})
     else:
         return JsonResponse({'list':["Machine Learning"]})
-    
+
+

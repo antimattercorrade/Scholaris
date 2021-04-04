@@ -190,7 +190,11 @@ def indexing():
 		# if word == 'data mining':
 		# 	print(word)
 		list_doc = []
+		scholar_Id_list = set()
 		for data in prof_data:
+			if(data['Scholar_ID'] in scholar_Id_list):
+				continue
+			scholar_Id_list.add(data['Scholar_ID'])
 			tf_value = 0
 			tf_name_value = 0
 			tf_research_value = 0
