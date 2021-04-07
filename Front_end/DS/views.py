@@ -38,23 +38,32 @@ def query_result(n, query):
 
     list_doc = {}
 
+    freq_counter = {}
+
     if( choice != "Interests"):
         query = list(query.split(" "))
         for q in query:
             q = q.lower()
+            curr_done = set()
             if(q == '' or q not in indexFile.keys()):
                 continue
             for doc in indexFile[q]:
                 if doc['Scholar_ID'] in list_doc:
-                    list_doc[doc['Scholar_ID']]['score'] += doc['score']
+                    if(doc['Scholar_ID'] not in curr_done):
+                        curr_done.add(doc["Scholar_ID"])
+                        freq_counter[doc['Scholar_ID']] += 1   
+                    curr_freq = freq_counter[doc['Scholar_ID']]
+                    list_doc[doc['Scholar_ID']]['score'] += 2**curr_freq*doc['score']
 
                     if(doc['score_name'] != -1):
                         list_doc[doc['Scholar_ID']]['score_name'] += doc['score_name']
                     if(doc['score_univ'] != -1):
                         list_doc[doc['Scholar_ID']]['score_univ'] += doc['score_univ']
                 else :
+                    freq_counter[doc['Scholar_ID']] = 1   
                     scholar_id = doc['Scholar_ID']
                     list_doc[scholar_id] = doc.copy()
+            
     else :
         query = query.lower()
         query = clean_string(query)

@@ -95,6 +95,11 @@
     a:link {color: DeepSkyBlue}
     
 }
+@media (prefers-color-scheme: light) {
+    body {color: white; background-color: black}
+    a:link {color: DeepSkyBlue}
+    
+}
 
 .autocomplete {
   position: relative;
