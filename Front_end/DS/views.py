@@ -5,15 +5,16 @@ from django.contrib.auth.models import User, auth
 from user.models import history, state
 import re
 from datetime import date
+from compress_pickle import load
 
 def compare_research(a,b):
     if( a["score_research"]  == b["score_research"]):
         return a["H Index"] > b["H Index"]
     return a["score_research"] > b["score_research"]
 
-import pickle
+# import pickle
 
-indexFile = pickle.load(open("./DS/Prof/index_file", 'rb'))
+indexFile = load("./DS/Prof/index_file.lzma")
 words = indexFile.keys()
 choice = "default"
 

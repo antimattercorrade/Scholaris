@@ -1,8 +1,7 @@
 import re
 import json
-import pickle
+from compress_pickle import dump
 import math
-
 
 
 # Clean string function
@@ -32,10 +31,10 @@ def indexing():
 	idf_data_research={}
 	idf_data_univ={}
 	tf_idf = {}
-	output_file_name = "index_file"
+	output_file_name = "index_file.lzma"
 	input_file_name = "prof.json"
 
-	prof_data_list = open(input_file_name).read().split("\n")
+	prof_data_list = open(input_file_name, encoding="utf8").read().split("\n")
 	stopwords = open("./stopword.txt").read().split("\n")
 
 	prof_data = []
@@ -244,7 +243,8 @@ def indexing():
 		tf_idf[word] = list_doc.copy()
 
 	with open(output_file_name, 'wb') as file:
-		pickle.dump(tf_idf, file)
+		dump(tf_idf,file , compression="lzma", set_default_extension=False)
+	
 
 if(__name__ == '__main__'):
 	indexing()
