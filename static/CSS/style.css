@@ -77,10 +77,11 @@
     color: black;
 }
 .dark-mode {
+  
   color: white; 
   background-color: black;
 }
-.dark-mode a:link {color: DeepSkyBlue}
+.dark-mode a:link {color: DeepSkyBlue} 
 .light-mode {color: black; background-color: white}
 .light-mode a:link {color: green}
 .transition{
@@ -93,7 +94,7 @@
 @media (prefers-color-scheme: dark) {
     body {color: white; background-color: black}
     a:link {color: DeepSkyBlue}
-    
+
 }
 @media (prefers-color-scheme: light) {
     body {color: white; background-color: black}

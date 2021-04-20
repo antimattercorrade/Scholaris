@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">        
         <!-- <link rel = "stylesheet" href = "{% static 'CSS/style.css' %}"> -->
         <link rel = "stylesheet" href = "{% static 'CSS/dark.css' %}">
+        <link rel="icon" href="{% static 'images/logo.png' %}">
 
         <style>
               @import "{% static 'CSS/style.css' %}";
@@ -70,9 +71,10 @@
               }
               .card {
                 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-                max-width: 300px;
+                /* max-width: 300px; */
                 margin: auto;
                 text-align: center;
+                border-radius: 0.85rem;
               }
               
               .title {
@@ -127,8 +129,8 @@
         
         .card{
           position: relative;
-          width: 315px; /* Remove for full width */
-          height: 400px; /* Remove for full width */
+          width: 330px; /* Remove for full width */
+          height: 560px; /* Remove for full width */
           margin:30px auto;
           box-shadow: 0 0 10px rgba(0,0,0, .3);
         }
@@ -137,6 +139,16 @@
           height: 150px;
           background-size: cover;
           background-position: top;
+          background-color:#95989A;
+          background-position: 0px 0px; 
+          height:70%;
+          max-height: 322px;
+          width:100%;
+          display: block;
+          margin-left: auto;
+          margin-right:auto;
+          width: 100%;
+          object-fit: cover;
         }
         .card-header:after{
           content:'';
@@ -281,7 +293,6 @@
             padding-top: 102px;
           }
           body {
-            
             overflow-x: hidden; /* Hide horizontal scrollbar */
           }
           /* Dropdown Button */
@@ -297,6 +308,7 @@
             font-size: 16px;
             border: none;
             cursor: pointer;
+            border-radius: 8px;
           }
 
           /* Dropdown button on hover & focus */
@@ -345,8 +357,11 @@
 
     </head>
     <body id="top" class="transition">
-        <div class="search" id = "row-change" >
-            <div class="row" id = "top-bar" style=" border-bottom:2px solid grey;height:70px;">
+        <div class="search" id = "row-change">
+            <div class="row" id = "top-bar" style="padding-bottom: 15vh; border-bottom:2px solid grey;height:70px; border-radius:0 0 30% 30%/0 0 50% 50%;background: radial-gradient(1.5em 6.28571em at 1.95em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 0 0, radial-gradient(1.5em 6.28571em at -0.45em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 1.5em 5.5em, radial-gradient(2.3em 4.57143em at 2.99em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.3) 55%, rgba(255, 255, 255, 0) 55%) 0 0, radial-gradient(2.3em 4.57143em at -0.69em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.3) 55%, rgba(255, 255, 255, 0) 55%) 2.3em 4em, radial-gradient(3.5em 6.28571em at 4.55em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 0 0, radial-gradient(3.5em 6.28571em at -1.05em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 3.5em 5.5em, radial-gradient(#a7bdb5, #68a5a7);
+            background-color: rgb(9, 148, 212);
+            background-size: 1.5em 11em, 1.5em 11em, 2.3em 8em, 2.3em 8em, 3.5em 11em, 3.5em 11em, 100% 100%;
+            background-repeat: repeat;">
                 <div class="col-md-1">
                     <div class="logo">
                       <a href="index.html">
@@ -432,9 +447,9 @@
                         <div class="col-md-5">
                               <!-- <a class="links" href="#user"><button class="signbutton" type="button" style="margin-right:100px;margin-top:20px;">Sign in</button></a></li> -->
                               {% if user.is_authenticated %}
-                                <a class="links" href="logout"><button class="signbutton" type="button" style="margin-right:100px;font-size:13px;margin-top:20px;">Sign out</button></a>
+                                <a class="links" href="logout"><button class="signbutton" type="button" style="margin-right:100px;font-size:13px;margin-top:20px;border-radius:8px;">Sign out</button></a>
                                {% else %}
-                               <a class="links" href="register"><button class="signbutton" type="button" style="margin-right:100px;margin-top:20px;">Sign in</button></a>
+                               <a class="links" href="register"><button class="signbutton" type="button" style="margin-right:100px;margin-top:20px;border-radius:8px;">Sign in</button></a>
                                {% endif %}
                         </div>
                       </div>
@@ -442,14 +457,14 @@
                   </div>
                 </div>
             </div>
-            <div class="row">
+            <!-- <div class="row" >
                 <div class="col-md-1">
 
                 </div>
                 <div class="col-md-4">
                     
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <script>
@@ -470,14 +485,14 @@
         </script>
         <div class="results">
             {% for i in noResults%}
-              <img src="https://cdn.dribbble.com/users/1554526/screenshots/3399669/no_results_found.png" style="display: block;margin-left: auto;margin-right: auto;width: 50%;">
+              <img alt= "not_found" src="{% static 'images/not_found.png' %}" style="display: block;margin-left: auto;margin-right: auto;width: 46%;">
             {% endfor %}
             {% for i in array %}
             <div class="row">
               {% for prof in i %}
                 <div class="col-md-4" >
                     <div class="card" >
-                        <div class="card-header tooll" id="xyz{{prof.id}}" data-jbox-title="Summary" data-jbox-content='{{prof.summary}}' style="background-color:#95989A;background-image: url({{prof.imageURL}}),url(https://vcunited.club/wp-content/uploads/2020/01/No-image-available-2.jpg);background-position: 0px 0px; height:45%;width:45%;display: block;margin-left: auto;margin-right: auto;width: 58%;">
+                        <div class="card-header tooll" id="xyz{{prof.id}}" data-jbox-title="Summary" data-jbox-content='{{prof.summary}}' style="background-image: url({{prof.imageURL}}),url('/static/images/user_not.jpg'); border-radius:10px;">
                         </div>
                         <div class="card-body">
                             <h3 class="name"><a href="{{prof.homepage}}">{{prof.name}}</a></h2>
@@ -538,7 +553,8 @@
             attach: '.tooll',
             getTitle: 'data-jbox-title',
             getContent: 'data-jbox-content',
-            width: '500px'
+            width: '500px',
+            // delayClose: 1000
           });
           document.getElementById("changecolor").value = "{{placeholder}}";
           new jBox('Tooltip', {
@@ -858,24 +874,21 @@
           }
           
           /*An array containing all the country names in the world:*/
-          var countries = ["Coding theory","Game theory","Discrete Mathematics","Graph theory","Mathematical logic","Number theory","Algorithms","Data structures","Artificial intelligence","Automated reasoning","Computer vision","Soft computing","Machine learning","Evolutionary computing","Natural language processing","Robotics","Networking","Computer Security","Cryptography Protocols","Computer Architecture","Operating Systems","Image Processing"];
+          var topics = ["Coding theory","Game theory","Discrete Mathematics","Graph theory","Mathematical logic","Number theory","Algorithms","Data structures","Artificial intelligence","Automated reasoning","Computer vision","Soft computing","Machine learning","Evolutionary computing","Natural language processing","Robotics","Networking","Computer Security","Cryptography Protocols","Computer Architecture","Operating Systems","Image Processing"];
           function getMeSomeQueries(query){
             const xhr = new XMLHttpRequest();
             xhr.open("post","queries",true);
             xhr.getResponseHeader("Content-type","application/json");
             xhr.send(query);
-            console.log(query);
             xhr.onload = function(){
               if(this.status==200){
-                console.log(this.responseText);
                 var list = JSON.parse(this.responseText)['list'];
-                countries = list;
-                console.log(countries);
-                autocomplete(document.getElementById("changecolor"), countries);
+                topics = list;
+                autocomplete(document.getElementById("changecolor"), topics);
               }
             }
           }
-          /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+          /*initiate the autocomplete function on the "myInput" element, and pass along the topics array as possible autocomplete values:*/
           </script>
     
     </body>
