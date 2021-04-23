@@ -484,6 +484,7 @@
           }
         </script>
         <div class="results">
+          <div class="part1">
             {% for i in noResults%}
               <img alt= "not_found" src="{% static 'images/not_found.png' %}" style="display: block;margin-left: auto;margin-right: auto;width: 46%;">
             {% endfor %}
@@ -522,6 +523,16 @@
                 {% endfor %}    
             </div>
             {% endfor %}
+          </div>
+          <div id="part2">
+            
+          </div>
+          <div id="part3">
+
+          </div>
+          <div id="part4">
+
+          </div>
         </div>
         {% ifequal choice 1 %}
         <script>
@@ -874,6 +885,7 @@
           }
           
           /*An array containing all the country names in the world:*/
+          var top = []
           var topics = ["Coding theory","Game theory","Discrete Mathematics","Graph theory","Mathematical logic","Number theory","Algorithms","Data structures","Artificial intelligence","Automated reasoning","Computer vision","Soft computing","Machine learning","Evolutionary computing","Natural language processing","Robotics","Networking","Computer Security","Cryptography Protocols","Computer Architecture","Operating Systems","Image Processing"];
           function getMeSomeQueries(query){
             const xhr = new XMLHttpRequest();
@@ -883,13 +895,241 @@
             xhr.onload = function(){
               if(this.status==200){
                 var list = JSON.parse(this.responseText)['list'];
-                topics = list;
-                autocomplete(document.getElementById("changecolor"), topics);
+                var final = topics;
+                final = final.filter( function( x ) {
+                  return list.indexOf( x ) < 0;
+                } );
+                
+                final = list.concat(final);
+                console.log(final);
+                autocomplete(document.getElementById("changecolor"), final);
               }
             }
           }
           /*initiate the autocomplete function on the "myInput" element, and pass along the topics array as possible autocomplete values:*/
+
           </script>
+          <script>
+            var part=0;
+            var htmlextra = [`{% for i in extra1 %}
+            <div class="row">
+              {% for prof in i %}
+                <div class="col-md-4" >
+                    <div class="card" >
+                        <div class="card-header tooll" id="xyz{{prof.id}}" data-jbox-title="Summary" data-jbox-content='{{prof.summary}}' style="background-image: url({{prof.imageURL}}),url('/static/images/user_not.jpg'); border-radius:10px;">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="name"><a href="{{prof.homepage}}">{{prof.name}}</a></h2>
+                            <h4 class="job-title">{{prof.institute}}</h4>
+                            <div class="bio tooll" data-jbox-title="All Research Interests" data-jbox-content='<ol>{% for i in prof.allInterest %}<li>{{i}}</li>{% endfor %}</ol>'>{{prof.interests}}</div>
+                        </div>
+                  
+                        <div class="card-footer">
+                            <div class="stats">
+                                <div class="stat">
+                                  <span class="labels">H-Index</span>
+                                  <span class="value">{{prof.hIndex}}</span>
+                                </div>
+                                <div class="stat">
+                                  <span class="labels">i10-Index</span>
+                                  <span class="value">{{prof.i10Index}}</span>
+                                </div>
+                                <div class="stat">
+                                  <span class="labels">Publications</span>
+                                  <span class="value">{{prof.publications}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                {% endfor %}    
+            </div>
+            {% endfor %}
+            `,`
+            {% for i in extra2 %}
+            <div class="row">
+              {% for prof in i %}
+                <div class="col-md-4" >
+                    <div class="card" >
+                        <div class="card-header tooll" id="xyz{{prof.id}}" data-jbox-title="Summary" data-jbox-content='{{prof.summary}}' style="background-image: url({{prof.imageURL}}),url('/static/images/user_not.jpg'); border-radius:10px;">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="name"><a href="{{prof.homepage}}">{{prof.name}}</a></h2>
+                            <h4 class="job-title">{{prof.institute}}</h4>
+                            <div class="bio tooll" data-jbox-title="All Research Interests" data-jbox-content='<ol>{% for i in prof.allInterest %}<li>{{i}}</li>{% endfor %}</ol>'>{{prof.interests}}</div>
+                        </div>
+                  
+                        <div class="card-footer">
+                            <div class="stats">
+                                <div class="stat">
+                                  <span class="labels">H-Index</span>
+                                  <span class="value">{{prof.hIndex}}</span>
+                                </div>
+                                <div class="stat">
+                                  <span class="labels">i10-Index</span>
+                                  <span class="value">{{prof.i10Index}}</span>
+                                </div>
+                                <div class="stat">
+                                  <span class="labels">Publications</span>
+                                  <span class="value">{{prof.publications}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                {% endfor %}    
+            </div>
+            {% endfor %}
+            `,
+            `{% for i in extra3 %}
+            <div class="row">
+              {% for prof in i %}
+                <div class="col-md-4" >
+                    <div class="card" >
+                        <div class="card-header tooll" id="xyz{{prof.id}}" data-jbox-title="Summary" data-jbox-content='{{prof.summary}}' style="background-image: url({{prof.imageURL}}),url('/static/images/user_not.jpg'); border-radius:10px;">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="name"><a href="{{prof.homepage}}">{{prof.name}}</a></h2>
+                            <h4 class="job-title">{{prof.institute}}</h4>
+                            <div class="bio tooll" data-jbox-title="All Research Interests" data-jbox-content='<ol>{% for i in prof.allInterest %}<li>{{i}}</li>{% endfor %}</ol>'>{{prof.interests}}</div>
+                        </div>
+                  
+                        <div class="card-footer">
+                            <div class="stats">
+                                <div class="stat">
+                                  <span class="labels">H-Index</span>
+                                  <span class="value">{{prof.hIndex}}</span>
+                                </div>
+                                <div class="stat">
+                                  <span class="labels">i10-Index</span>
+                                  <span class="value">{{prof.i10Index}}</span>
+                                </div>
+                                <div class="stat">
+                                  <span class="labels">Publications</span>
+                                  <span class="value">{{prof.publications}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                {% endfor %}    
+            </div>
+            {% endfor %}`]
+            function addthere(){
+              if(part>=3){
+               return; 
+              }
+              else if(part==2){
+                document.getElementById("part4").innerHTML = htmlextra[2];
+                part+=1
+                new jBox('Tooltip', {
+                  id: 'pub2',
+                  attach: '.tooll',
+                  getTitle: 'data-jbox-title',
+                  getContent: 'data-jbox-content',
+                  width: '500px',
+                  theme: temp
+                });
+                {% for i in extra3 %}
+                {% for prof in i %}
+                      $(document).ready(function() {
+                        currentTheme = localStorage.getItem("theme");
+                        var temp = "";
+                        if(currentTheme == "dark") temp = "TooltipDark";
+                        new jBox('Modal', {
+                          id: 'pub',
+                          attach: '#xyz{{prof.id}}',
+                          width: 600,
+                          title: 'Publications of {{prof.name}}',
+                          overlay: false,
+                          content: `<ol>{% for j in prof.acPublications%}<li><div class="row"><div class="col-md-10"><p>{{j.content}}<p></div><div class="col-md-2"><p>{{j.year}}<p></div></div></li>{% endfor %}</ol>`,
+                          draggable: 'title',
+                          repositionOnOpen: false,
+                          repositionOnContent: false,
+                          theme: temp
+                        });  
+                      });
+            {% endfor %}
+          {% endfor %}
+                    document.getElementById("addthereRemove").innerHTML = "";
+              }
+              else if(part==1){
+                document.getElementById("part3").innerHTML = htmlextra[1];
+                part+=1
+                new jBox('Tooltip', {
+                  id: 'pub2',
+                  attach: '.tooll',
+                  getTitle: 'data-jbox-title',
+                  getContent: 'data-jbox-content',
+                  width: '500px',
+                  theme: temp
+                });
+                {% for i in extra2 %}
+                {% for prof in i %}
+                      $(document).ready(function() {
+                        currentTheme = localStorage.getItem("theme");
+                        var temp = "";
+                        if(currentTheme == "dark") temp = "TooltipDark";
+                        new jBox('Modal', {
+                          id: 'pub',
+                          attach: '#xyz{{prof.id}}',
+                          width: 600,
+                          title: 'Publications of {{prof.name}}',
+                          overlay: false,
+                          content: `<ol>{% for j in prof.acPublications%}<li><div class="row"><div class="col-md-10"><p>{{j.content}}<p></div><div class="col-md-2"><p>{{j.year}}<p></div></div></li>{% endfor %}</ol>`,
+                          draggable: 'title',
+                          repositionOnOpen: false,
+                          repositionOnContent: false,
+                          theme: temp
+                        });  
+                      });
+            {% endfor %}
+          {% endfor %}
+              }
+              else if(part==0){
+                document.getElementById("part2").innerHTML = htmlextra[0];
+                part+=1
+                new jBox('Tooltip', {
+                  id: 'pub2',
+                  attach: '.tooll',
+                  getTitle: 'data-jbox-title',
+                  getContent: 'data-jbox-content',
+                  width: '500px',
+                  theme: temp
+                });
+                {% for i in extra1 %}
+            {% for prof in i %}
+                  $(document).ready(function() {
+                    currentTheme = localStorage.getItem("theme");
+                    var temp = "";
+                    if(currentTheme == "dark") temp = "TooltipDark";
+                    new jBox('Modal', {
+                      id: 'pub',
+                      attach: '#xyz{{prof.id}}',
+                      width: 600,
+                      title: 'Publications of {{prof.name}}',
+                      overlay: false,
+                      content: `<ol>{% for j in prof.acPublications%}<li><div class="row"><div class="col-md-10"><p>{{j.content}}<p></div><div class="col-md-2"><p>{{j.year}}<p></div></div></li>{% endfor %}</ol>`,
+                      draggable: 'title',
+                      repositionOnOpen: false,
+                      repositionOnContent: false,
+                      theme: temp
+                    });  
+                  });
+                  
+        {% endfor %}
+      {% endfor %}
+                  
+              }
+            }
+          </script>
+          
+      <div id="addthereRemove">
+          <button onclick="addthere();">Show More</button>
+        </div>
     
     </body>
 </html>

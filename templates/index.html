@@ -288,8 +288,14 @@ function getMeSomeQueries(query){
   xhr.onload = function(){
     if(this.status==200){
       var list = JSON.parse(this.responseText)['list'];
-      topics = list;
-      autocomplete(document.getElementById("changecolor"), topics);
+                var final = topics;
+                final = final.filter( function( x ) {
+                  return list.indexOf( x ) < 0;
+                } );
+                
+                final = list.concat(final);
+                console.log(final);
+                autocomplete(document.getElementById("changecolor"), final);
     }
   }
 }

@@ -170,7 +170,7 @@ def home_search(request):
         if len(all)==0:
             hist = history(username=request.user.username,history=query)
             hist.save()
-    results_required = 25
+    results_required = 96
     x = time.time()
     search_result = query_result(results_required,query)
     array = []
@@ -182,15 +182,28 @@ def home_search(request):
                 break
             if(search_result[i*3+j]["University_name"] == None or search_result[i*3+j]["University_name"] == 'Homepage'):
                 search_result[i*3+j]["University_name"] = "NA"
-            temp.append(prof(i*3+j,search_result[i*3+j]["Name"], search_result[i*3+j]["img_src"],search_result[i*3+j]["University_name"][:30],", ".join(search_result[i*3+j]["Research_Interests"][:3])[:80],search_result[i*3+j]["H Index"],search_result[i*3+j]["I10 Index"],len(search_result[i*3+j]["Publications"]),search_result[i*3+j]["home_page_url"],search_result[i*3+j]["home_page_summary"],search_result[i*3+j]["Publications"],search_result[i*3+j]["Research_Interests"]))
-            
+            temp.append(prof(i*3+j,search_result[i*3+j]["Name"], search_result[i*3+j]["img_src"],search_result[i*3+j]["University_name"][:30],", ".join(search_result[i*3+j]["Research_Interests"][:3])[:80],search_result[i*3+j]["H Index"],search_result[i*3+j]["I10 Index"],len(search_result[i*3+j]["Publications"]),search_result[i*3+j]["home_page_url"],search_result[i*3+j]["home_page_summary"],search_result[i*3+j]["Publications"],search_result[i*3+j]["Research_Interests"]))            
         array.append(temp)
     # print(time.time()-x)
+    l = len(array)
+    if(l>8):
+        extra1 = array[8:16]
+    else:
+        extra1 = None
+    if(l>16):
+        extra2 = array[16:24]
+    else:
+        extra2 = None
+    if l>24:
+        extra3 = array[24:]
+    else:
+        extra3 = None
     noResults = []
     if len(array[0])==0:
         noResults = [1]
+    array = array[:8]
     global choice_num
-    return render(request, "search.html",{"array":array,"placeholder":query,"noResults":noResults, "choice":choice_num, "publi":publications})
+    return render(request, "search.html",{"array":array,"placeholder":query,"noResults":noResults, "choice":choice_num, "publi":publications,"extra1":extra1,"extra2":extra2,"extra3":extra3})
 
 
 @csrf_exempt
