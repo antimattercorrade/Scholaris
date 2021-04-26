@@ -55,7 +55,7 @@
                 <th scope="row">{{i.id}}</th>
                 <td>{{i.time}}</td>
                 <td>{{i.history}}</td>
-                <td><button type="button" class="btn btn-danger" onclick="runfunc('{{i.history}}');">Delete</button></td>
+                <td id="{{i.history}}"><button type="button" class="btn btn-danger"  onclick="runfunc('{{i.history}}');">Delete</button></td>
               </tr>
             {% endfor %}
           </table>
@@ -68,6 +68,7 @@
                 xhr.onload = function(){
                     if(this.status==200){
                     console.log(this.responseText);
+                    document.getElementById(del).innerHTML = `<button type="button" class="btn btn-success">Deleted</button>`;
                   }
                 }
               }
