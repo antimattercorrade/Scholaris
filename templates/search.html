@@ -358,10 +358,7 @@
     </head>
     <body id="top" class="transition">
         <div class="search" id = "row-change">
-            <div class="row" id = "top-bar" style="padding-bottom: 15vh; border-bottom:2px solid grey;height:70px; border-radius:0 0 30% 30%/0 0 50% 50%;background: radial-gradient(1.5em 6.28571em at 1.95em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 0 0, radial-gradient(1.5em 6.28571em at -0.45em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 1.5em 5.5em, radial-gradient(2.3em 4.57143em at 2.99em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.3) 55%, rgba(255, 255, 255, 0) 55%) 0 0, radial-gradient(2.3em 4.57143em at -0.69em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.3) 55%, rgba(255, 255, 255, 0) 55%) 2.3em 4em, radial-gradient(3.5em 6.28571em at 4.55em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 0 0, radial-gradient(3.5em 6.28571em at -1.05em, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.25) 50%, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0) 55%) 3.5em 5.5em, radial-gradient(#a7bdb5, #68a5a7);
-            background-color: rgb(9, 148, 212);
-            background-size: 1.5em 11em, 1.5em 11em, 2.3em 8em, 2.3em 8em, 3.5em 11em, 3.5em 11em, 100% 100%;
-            background-repeat: repeat;">
+            <div class="row" id = "top-bar" >
                 <div class="col-md-1">
                     <div class="logo">
                       <a href="index.html">
@@ -477,7 +474,6 @@
             xhr.send(name)
             xhr.onload = function(){
               if(this.status==200){
-                console.log(this.responseText);
                 if(request=="publi"){
                   location.reload();
                 }
@@ -652,6 +648,7 @@
               document.getElementById("changecolor").style.color = "white";
               document.getElementById("row-change").style.color = "white";
               document.getElementById("top-bar").style.backgroundColor = "#2b2e4a";
+              document.getElementById("myDropdown").style.backgroundColor = "#2b2e4a";
               document.getElementById("multi-select").style.color = "white";
               var labels = document.getElementsByClassName("labels");
               for(var i =0; i < labels.length; i++){
@@ -683,6 +680,7 @@
               document.getElementById("row-change").style.color = "#000000";
               document.getElementById("multi-select").style.color = "#000000";
               document.getElementById("top-bar").style.backgroundColor = "white";
+              document.getElementById("myDropdown").style.backgroundColor = "white";
               
               var labels = document.getElementsByClassName("labels");
               for(var i =0; i < labels.length; i++){
@@ -714,6 +712,7 @@
               document.getElementById("row-change").style.color = "#000000";
               document.getElementById("multi-select").style.color = "#000000";
               document.getElementById("top-bar").style.backgroundColor = "white";
+              document.getElementById("myDropdown").style.backgroundColor = "white";
               
               var cards = document.getElementsByClassName("card");
               for (var i= 0; i < cards.length; i++){
@@ -754,6 +753,7 @@
               document.getElementById("changecolor").style.color = "white";
               document.getElementById("row-change").style.color = "white";
               document.getElementById("top-bar").style.backgroundColor = "#2b2e4a";
+              document.getElementById("myDropdown").style.backgroundColor = "#2b2e4a";
               document.getElementById("multi-select").style.color = "white";
               var labels = document.getElementsByClassName("labels");
               for(var i =0; i < labels.length; i++){
@@ -804,6 +804,9 @@
                 a = document.createElement("DIV");
                 a.setAttribute("id", this.id + "autocomplete-list");
                 a.setAttribute("class", "autocomplete-items");
+                var checkTheme = localStorage.getItem("theme");
+                if(checkTheme == "dark") a.setAttribute("style", "color: white;"); 
+                else a.setAttribute("style", "color: black"); 
                 /*append the DIV element as a child of the autocomplete container:*/
                 this.parentNode.appendChild(a);
                 /*for each item in the array...*/
@@ -812,6 +815,8 @@
                   if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
                     /*create a DIV element for each matching element:*/
                     b = document.createElement("DIV");
+                    if(checkTheme == "dark")b.setAttribute("style", "background-color: #2b2e4a"); 
+                    else b.setAttribute("style", "background-color: white"); 
                     /*make the matching letters bold:*/
                     b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
                     b.innerHTML += arr[i].substr(val.length);
@@ -903,7 +908,6 @@
                 } );
                 
                 final = list.concat(final).slice(0,Math.min(12,final.length));
-                console.log(final);
                 autocomplete(document.getElementById("changecolor"), final);
               }
             }
@@ -1027,6 +1031,9 @@
               else if(part==2){
                 document.getElementById("part4").innerHTML = htmlextra[2];
                 part+=1
+                currentTheme = localStorage.getItem("theme");
+                var temp = "";
+                if(currentTheme == "dark") temp = "TooltipDark";  
                 new jBox('Tooltip', {
                   id: 'pub2',
                   attach: '.tooll',
@@ -1061,6 +1068,9 @@
               else if(part==1){
                 document.getElementById("part3").innerHTML = htmlextra[1];
                 part+=1
+                currentTheme = localStorage.getItem("theme");
+                var temp = "";
+                if(currentTheme == "dark") temp = "TooltipDark";  
                 new jBox('Tooltip', {
                   id: 'pub2',
                   attach: '.tooll',
@@ -1094,6 +1104,9 @@
               else if(part==0){
                 document.getElementById("part2").innerHTML = htmlextra[0];
                 part+=1
+                currentTheme = localStorage.getItem("theme");
+                var temp = "";
+                if(currentTheme == "dark") temp = "TooltipDark";  
                 new jBox('Tooltip', {
                   id: 'pub2',
                   attach: '.tooll',
@@ -1130,7 +1143,7 @@
           </script>
           
       <div id="addthereRemove">
-          <button onclick="addthere();">Show More</button>
+          <button onclick="addthere(); toggle_mode(); toggle_mode();">Show More</button>
         </div>
     
     </body>

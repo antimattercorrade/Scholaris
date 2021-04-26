@@ -158,7 +158,6 @@ li a:hover {
            }
         }
         
-      
       function toggle_mode() {
         var currentTheme = localStorage.getItem("theme");
         // console.log(currentTheme);
@@ -168,7 +167,6 @@ li a:hover {
               document.body.classList.toggle("light-mode");
            }
            document.getElementById("changecolor").style.color = "#000000";
-            
         }
         else {
             localStorage.setItem("theme", "dark");
@@ -176,7 +174,6 @@ li a:hover {
                 document.body.classList.toggle("light-mode");
             }
             document.getElementById("changecolor").style.color = "white";
-            
         }
     }
     </script>
@@ -185,7 +182,7 @@ li a:hover {
 function autocomplete(inp, arr) {
   /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
-  var currentFocus;
+  var currentFocus = 0;
   /*execute a function when someone writes in the text field:*/
   inp.addEventListener("input", function(e) {
       var a, b, i, val = this.value;
@@ -197,6 +194,9 @@ function autocomplete(inp, arr) {
       a = document.createElement("DIV");
       a.setAttribute("id", this.id + "autocomplete-list");
       a.setAttribute("class", "autocomplete-items");
+      var checkTheme = localStorage.getItem("theme");
+      if(checkTheme == "dark") a.setAttribute("style", "color: white;"); 
+      else a.setAttribute("style", "color: black"); 
       /*append the DIV element as a child of the autocomplete container:*/
       this.parentNode.appendChild(a);
       /*for each item in the array...*/
@@ -205,6 +205,8 @@ function autocomplete(inp, arr) {
         if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
           /*create a DIV element for each matching element:*/
           b = document.createElement("DIV");
+          if(checkTheme == "dark")b.setAttribute("style", "background-color: black"); 
+          else b.setAttribute("style", "background-color: white"); 
           /*make the matching letters bold:*/
           b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
           b.innerHTML += arr[i].substr(val.length);
@@ -226,6 +228,7 @@ function autocomplete(inp, arr) {
   inp.addEventListener("keydown", function(e) {
       var x = document.getElementById(this.id + "autocomplete-list");
       if (x) x = x.getElementsByTagName("div");
+      // console.log(e.keycode);
       if (e.keyCode == 40) {
         /*If the arrow DOWN key is pressed,
         increase the currentFocus variable:*/
@@ -282,6 +285,7 @@ function autocomplete(inp, arr) {
 /*An array containing all the country names in the world:*/
 var top = []
 var topics = ["Coding theory","Game theory","Discrete Mathematics","Graph theory","Mathematical logic","Number theory","Algorithms","Data structures","Artificial intelligence","Automated reasoning","Computer vision","Soft computing","Machine learning","Evolutionary computing","Natural language processing","Robotics","Networking","Computer Security","Cryptography Protocols","Computer Architecture","Operating Systems","Image Processing"];
+var final = [];
 function getMeSomeQueries(query){
   const xhr = new XMLHttpRequest();
   xhr.open("post","queries",true);
@@ -290,16 +294,16 @@ function getMeSomeQueries(query){
   xhr.onload = function(){
     if(this.status==200){
       var list = JSON.parse(this.responseText)['list'];
-      var final = topics;
+      final = topics;
       final = final.filter( function( x ) {
         return list.indexOf( x ) < 0;
       });
       final = list.concat(final).slice(0,Math.min(12,final.length));
-      console.log(final);
       autocomplete(document.getElementById("changecolor"), final);
     }
   }
 }
+// autocomplete(document.getElementById("changecolor"), final);
 /*initiate the autocomplete function on the "myInput" element, and pass along the topics array as possible autocomplete values:*/
 </script>
 
