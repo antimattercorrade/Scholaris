@@ -27,4 +27,6 @@ urlpatterns = [
     path("login", views.login, name="login"),
     path("logout", views.logout, name="logout"),
     path("queries", views.queries, name="queries"),
+    path("history", views.delHistory, name="history"),
+    path("delete", views.delthis, name="delete"),
 ]

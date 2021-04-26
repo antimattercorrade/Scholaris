@@ -41,7 +41,8 @@ li a:hover {
       <header>
           <ul>
           <li>{% if user.is_authenticated %}
-             <a class="links" href="logout"><button class="signbutton" type="button">Sign out</button></a></li>
+            <a class="links" href="logout"><button class="signbutton" type="button">Sign Out</button></a></li>
+             <li><a class="links" href="history"><button class="signbutton" type="button">History</button></a></li>
             {% else %}
             <a class="links" href="register"><button class="signbutton" type="button">Sign in</button></a></li>
             {% endif %}
@@ -279,6 +280,7 @@ function autocomplete(inp, arr) {
 }
 
 /*An array containing all the country names in the world:*/
+var top = []
 var topics = ["Coding theory","Game theory","Discrete Mathematics","Graph theory","Mathematical logic","Number theory","Algorithms","Data structures","Artificial intelligence","Automated reasoning","Computer vision","Soft computing","Machine learning","Evolutionary computing","Natural language processing","Robotics","Networking","Computer Security","Cryptography Protocols","Computer Architecture","Operating Systems","Image Processing"];
 function getMeSomeQueries(query){
   const xhr = new XMLHttpRequest();
@@ -288,14 +290,13 @@ function getMeSomeQueries(query){
   xhr.onload = function(){
     if(this.status==200){
       var list = JSON.parse(this.responseText)['list'];
-                var final = topics;
-                final = final.filter( function( x ) {
-                  return list.indexOf( x ) < 0;
-                } );
-                
-                final = list.concat(final);
-                console.log(final);
-                autocomplete(document.getElementById("changecolor"), final);
+      var final = topics;
+      final = final.filter( function( x ) {
+        return list.indexOf( x ) < 0;
+      });
+      final = list.concat(final).slice(0,Math.min(12,final.length));
+      console.log(final);
+      autocomplete(document.getElementById("changecolor"), final);
     }
   }
 }

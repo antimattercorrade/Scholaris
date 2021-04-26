@@ -424,13 +424,14 @@
                               Default
                             </div>
                           </div>
+                          
                         </div>
                         <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
                         <script>
                           $('#multi-select').dropdown();
                         </script>
                       </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4">                      
                       <div class="row">
                         <div class="col-md-6">
                           <div class="dropdown">
@@ -443,6 +444,7 @@
                               <a href="#">Lifetime</a> -->
                             </div>
                           </div>
+                          
                         </div>
                         <div class="col-md-5">
                               <!-- <a class="links" href="#user"><button class="signbutton" type="button" style="margin-right:100px;margin-top:20px;">Sign in</button></a></li> -->
@@ -900,7 +902,7 @@
                   return list.indexOf( x ) < 0;
                 } );
                 
-                final = list.concat(final);
+                final = list.concat(final).slice(0,Math.min(12,final.length));
                 console.log(final);
                 autocomplete(document.getElementById("changecolor"), final);
               }
