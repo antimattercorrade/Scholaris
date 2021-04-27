@@ -22,9 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 't@k(m55ax%g^bfzv#hkzqx8(eqvc4*x#8879(+m56wfbp%!5dg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["scholaris.pythonanywhere.com"]
 
 
 # Application definition
@@ -54,7 +54,7 @@ ROOT_URLCONF = 'DS.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["templates"],
+        'DIRS': ["/home/scholaris/Search_Engine/Front_end/templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
