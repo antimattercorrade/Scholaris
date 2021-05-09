@@ -129,7 +129,7 @@ The following is the summary of the dataset scrapped from different sources. The
 
 Other stats              |  Total Publications
 :-------------------------:|:-------------------------:
-![dataset stat](https://i.imgur.com/ORoB7vq.png =600x) | ![dataset stat](https://i.imgur.com/i5Q035g.png =500x)
+![dataset stat](https://i.imgur.com/ORoB7vq.png) | ![dataset stat](https://i.imgur.com/i5Q035g.png)
 
 
 ## Index Creation :notebook:
