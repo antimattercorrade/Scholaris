@@ -13,8 +13,6 @@ def compare_research(a,b):
         return a["H Index"] > b["H Index"]
     return a["score_research"] > b["score_research"]
 
-# import pickle
-
 indexFile = load("./DS/Prof/index_file.lzma")
 words = indexFile.keys()
 choice = "default"
@@ -109,7 +107,6 @@ def query_result(n, query):
         for data in sorted(list_data, key=lambda k: ((k['score_research']),float(k['H Index'])), reverse=True):
             if(data['score_research'] == -1):
                 continue
-            # print(data['H Index'],data['score_research'],data['Name'])
             res.append(data)
             if (count == n) :
                 break
@@ -117,7 +114,6 @@ def query_result(n, query):
 
     elif(choice == 'default'):
         for data in sorted(list_data, key=lambda k: (k['score'],float(k['H Index'])), reverse=True):
-            # print(data['score'], data['Name'])
             res.append(data)
             if (count == n) :
                 break
@@ -125,7 +121,7 @@ def query_result(n, query):
 
     return res
 
-# from quoters import Quote
+
 def home(request):
     return render(request,"index.html")
 
@@ -155,9 +151,6 @@ class prof:
             if YEAR-int(i[2])<=publications:
                 actual.append(publication(i[0],i[1],i[2]))
         self.publications = len(actual)
-        # pub = ""
-        # for i in actual:
-        #     pub += "<p>"+i+"</p><br>"
         self.acPublications = actual
 
 
@@ -190,7 +183,6 @@ def home_search(request):
                 search_result[i*3+j]["University_name"] = "NA"
             temp.append(prof(i*3+j,search_result[i*3+j]["Name"], search_result[i*3+j]["img_src"],search_result[i*3+j]["University_name"][:30],", ".join(search_result[i*3+j]["Research_Interests"][:3])[:80],search_result[i*3+j]["H Index"],search_result[i*3+j]["I10 Index"],len(search_result[i*3+j]["Publications"]),search_result[i*3+j]["home_page_url"],search_result[i*3+j]["home_page_summary"],search_result[i*3+j]["Publications"],search_result[i*3+j]["Research_Interests"]))
         array.append(temp)
-    # print(time.time()-x)
     l = len(array)
     if(l>8):
         extra1 = array[8:16]
@@ -213,7 +205,6 @@ def home_search(request):
 
 @csrf_exempt
 def pref(request):
-    # print(request.body.decode())
     global choice
     global choice_num
     if(request.body.decode() == 'prof_name'):

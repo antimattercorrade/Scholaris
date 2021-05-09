@@ -133,7 +133,6 @@ def indexing():
 		for data in row['Research_Interests']:
 			clean_interests = clean_string(data)
 			list_word = clean_interests.split(" ")
-			# list_word = clean_string(data)
 			for word in list_word:
 				if word in tf:
 					tf[word] += 2
@@ -186,8 +185,6 @@ def indexing():
 		idf_data_univ[row] = 1 + math.log10(len(tf_data_univ)/df_data_univ[row])
 
 	for word in df_data:
-		# if word == 'data mining':
-		# 	print(word)
 		list_doc = []
 		scholar_Id_list = set()
 		for data in prof_data:
