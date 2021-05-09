@@ -58,15 +58,12 @@ li a:hover {
             <input class="searchbar" id="changecolor" name="search" placeholder="Enter Search Query" type="text" title="Search">
             <script>
               $(document).ready(function(){
-                var count = 0;
-                getMeSomeQueries(document.getElementById("changecolor").value);
               $("#changecolor").keydown(function(e){ 
                   if(e.keyCode==13){
                     document.getElementById('meme').submit();
                   }
-                  else if(count == 0){
-                    count +=1; 
-                    getMeSomeQueries(document.getElementById("changecolor").value);
+                  else if(e.keyCode!=40 && e.keyCode!=38){
+                      getMeSomeQueries(document.getElementById("changecolor").value);
                   }
                 }); 
               });

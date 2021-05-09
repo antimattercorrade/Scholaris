@@ -12,7 +12,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.2.0/dist/jBox.all.min.js"></script>
         <link href="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.2.0/dist/jBox.all.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <!-- <link rel = "stylesheet" href = "{% static 'CSS/style.css' %}"> -->
         <link rel = "stylesheet" href = "{% static 'CSS/dark.css' %}">
         <link rel="icon" href="{% static 'images/logo.png' %}">
@@ -61,9 +61,9 @@
                 width:500px;
                 font-size:16px;
                 outline: none;
-                
+
               }
-              
+
               .center{
                 display: block;
               margin-left: auto;
@@ -76,12 +76,12 @@
                 text-align: center;
                 border-radius: 0.85rem;
               }
-              
+
               .title {
                 color: grey;
                 font-size: 18px;
               }
-              
+
               button {
                 border: none;
                 outline: 0;
@@ -94,20 +94,20 @@
                 width: 100%;
                 font-size: 18px;
               }
-              
+
               a {
                 text-decoration: none;
                 font-size: 22px;
                 color: black;
               }
-              
+
               button:hover, a:hover {
                 opacity: 0.7;
               }
               .results{
                   margin-top: 70px;
               }
-              
+
               /* .search{
                 background-color: rgba(255, 255, 255, 1);
                   width:100%;
@@ -115,7 +115,7 @@
                   top: 0px;
                   z-index: 1;
               } */
-            
+
         </style>
         <style>
             @import url(https://fonts.googleapis.com/css?family=Exo+2:300,400,700);
@@ -126,7 +126,7 @@
           font-family: "Exo 2", sans-serif;
           color: #333;
         }
-        
+
         .card{
           position: relative;
           width: 330px; /* Remove for full width */
@@ -140,7 +140,7 @@
           background-size: cover;
           background-position: top;
           background-color:#95989A;
-          background-position: 0px 0px; 
+          background-position: 0px 0px;
           height:70%;
           max-height: 322px;
           width:100%;
@@ -155,9 +155,9 @@
           position: absolute;
           width: 100%;
           height: 100%;
-         
+
         }
-        
+
         .card-header-bar{
           position: absolute;
           top:0;
@@ -165,7 +165,7 @@
           z-index: 1;
           width: 100%;
         }
-        
+
         .sr-only{
           position: absolute;
           width: 1px;
@@ -174,7 +174,7 @@
           border: none;
           overflow: hidden;
         }
-        
+
         svg .polygon{
           fill: #fff;
         }
@@ -186,7 +186,7 @@
           right:0;
           left:0;
         }
-        
+
         .btn-follow{
           position: absolute;
           top: -15px;
@@ -197,7 +197,7 @@
           border-radius:100%;
           box-shadow: 0 10px 15px rgba(110,221,235, .53);
         }
-        
+
         .btn-follow:after{
           content: '';
           position:absolute;
@@ -208,26 +208,26 @@
           top:50%;
           transform: translate(-50%, -50%);
         }
-        
+
         .card-body{
           text-align:center;
           padding-left: 10px;
         }
-        
+
         .name{
           font-size: 10px;
           font-weight: 400;
           text-transform: uppercase;
           margin: 0 auto;
         }
-        
+
         .job-title{
           font-size: 14px;
           font-weight: 300;
           margin-top: 5px;
           color: #919191;
         }
-        
+
         .bio{
           font-size: 14px;
           color: #7B7B7B;
@@ -235,22 +235,22 @@
           margin: 10px auto;
           line-height: 20px;
         }
-        
+
         .social-accounts img{
           width: 15px;
         }
-        
+
         .social-accounts a{
           margin-left: 10px;
         }
         .social-accounts a:first-child{
           margin-left: 0;
         }
-        
+
         .card-footer{
           /*position:fixed; /* Full card width/height */
           position: absolute; /* Fixed card width/height */
-        
+
           left: 0;
           width: 100%;
           bottom: 20px;
@@ -270,25 +270,25 @@
           letter-spacing: 1px;
           color: #95989A;
         }
-        
+
         .stat .value{
           display: block;
           font-weight: 700;
           font-size:20px;
           margin-top: 5px;
         }
-        
-          
+
+
         .content {
             padding: 16px;
           }
-          
+
           .sticky {
             position: fixed;
             top: 0;
             width: 100%;
           }
-          
+
           .sticky + .content {
             padding-top: 102px;
           }
@@ -361,7 +361,7 @@
             <div class="row" id = "top-bar" >
                 <div class="col-md-1">
                     <div class="logo">
-                      <a href="index.html">
+                      <a href="/">
                         <img alt="Google" src="{% static 'images/logo.png' %}" height="100%" width="110%" style="margin-left:-5px;margin-top:12px;">
                       </a>
                     </div>
@@ -375,28 +375,24 @@
                           <a onclick="document.getElementById('meme').submit()"> <img class="voice" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIGQ9Ik0zMTAsMTkwYy01LjUyLDAtMTAsNC40OC0xMCwxMHM0LjQ4LDEwLDEwLDEwYzUuNTIsMCwxMC00LjQ4LDEwLTEwUzMxNS41MiwxOTAsMzEwLDE5MHoiLz4NCgk8L2c+DQo8L2c+DQo8Zz4NCgk8Zz4NCgkJPHBhdGggZD0iTTUwMC4yODEsNDQzLjcxOWwtMTMzLjQ4LTEzMy40OEMzODguNTQ2LDI3Ny40ODUsNDAwLDIzOS41NTUsNDAwLDIwMEM0MDAsODkuNzIsMzEwLjI4LDAsMjAwLDBTMCw4OS43MiwwLDIwMA0KCQkJczg5LjcyLDIwMCwyMDAsMjAwYzM5LjU1NiwwLDc3LjQ4Ni0xMS40NTUsMTEwLjIzOS0zMy4xOThsMzYuODk1LDM2Ljg5NWMwLjAwNSwwLjAwNSwwLjAxLDAuMDEsMC4wMTYsMC4wMTZsOTYuNTY4LDk2LjU2OA0KCQkJQzQ1MS4yNzYsNTA3LjgzOCw0NjEuMzE5LDUxMiw0NzIsNTEyYzEwLjY4MSwwLDIwLjcyNC00LjE2MiwyOC4yNzgtMTEuNzE2QzUwNy44MzcsNDkyLjczMSw1MTIsNDgyLjY4Nyw1MTIsNDcyDQoJCQlTNTA3LjgzNyw0NTEuMjY5LDUwMC4yODEsNDQzLjcxOXogTTMwNS41MzYsMzQ1LjcyN2MwLDAuMDAxLTAuMDAxLDAuMDAxLTAuMDAyLDAuMDAyQzI3NC42NjcsMzY4LjE0OSwyMzguMTc1LDM4MCwyMDAsMzgwDQoJCQljLTk5LjI1MiwwLTE4MC04MC43NDgtMTgwLTE4MFMxMDAuNzQ4LDIwLDIwMCwyMHMxODAsODAuNzQ4LDE4MCwxODBjMCwzOC4xNzUtMTEuODUxLDc0LjY2Ny0zNC4yNzIsMTA1LjUzNQ0KCQkJQzMzNC41MTEsMzIwLjk4OCwzMjAuOTg5LDMzNC41MTEsMzA1LjUzNiwzNDUuNzI3eiBNMzI2LjUxNiwzNTQuNzkzYzEwLjM1LTguNDY3LDE5LjgxMS0xNy45MjgsMjguMjc3LTI4LjI3N2wyOC4zNzEsMjguMzcxDQoJCQljLTguNjI4LDEwLjE4My0xOC4wOTQsMTkuNjUtMjguMjc3LDI4LjI3N0wzMjYuNTE2LDM1NC43OTN6IE00ODYuMTM5LDQ4Ni4xMzljLTMuNzgsMy43OC04LjgwMSw1Ljg2MS0xNC4xMzksNS44NjENCgkJCXMtMTAuMzU5LTIuMDgxLTE0LjEzOS01Ljg2MWwtODguNzk1LTg4Ljc5NWMxMC4xMjctOC42OTEsMTkuNTg3LTE4LjE1LDI4LjI3Ny0yOC4yNzdsODguNzk4LDg4Ljc5OA0KCQkJQzQ4OS45MTksNDYxLjYzOSw0OTIsNDY2LjY1OCw0OTIsNDcyQzQ5Miw0NzcuMzQyLDQ4OS45MTksNDgyLjM2MSw0ODYuMTM5LDQ4Ni4xMzl6Ii8+DQoJPC9nPg0KPC9nPg0KPGc+DQoJPGc+DQoJCTxwYXRoIGQ9Ik0yMDAsNDBjLTg4LjIyNSwwLTE2MCw3MS43NzUtMTYwLDE2MHM3MS43NzUsMTYwLDE2MCwxNjBzMTYwLTcxLjc3NSwxNjAtMTYwUzI4OC4yMjUsNDAsMjAwLDQweiBNMjAwLDM0MA0KCQkJYy03Ny4xOTYsMC0xNDAtNjIuODA0LTE0MC0xNDBTMTIyLjgwNCw2MCwyMDAsNjBzMTQwLDYyLjgwNCwxNDAsMTQwUzI3Ny4xOTYsMzQwLDIwMCwzNDB6Ii8+DQoJPC9nPg0KPC9nPg0KPGc+DQoJPGc+DQoJCTxwYXRoIGQ9Ik0zMTIuMDY1LDE1Ny4wNzNjLTguNjExLTIyLjQxMi0yMy42MDQtNDEuNTc0LTQzLjM2LTU1LjQxM0MyNDguNDc5LDg3LjQ5LDIyNC43MjEsODAsMjAwLDgwYy01LjUyMiwwLTEwLDQuNDc4LTEwLDEwDQoJCQljMCw1LjUyMiw0LjQ3OCwxMCwxMCwxMGM0MS4wOTksMCw3OC42MzEsMjUuODE4LDkzLjM5Niw2NC4yNDdjMS41MjgsMy45NzYsNS4zMTcsNi40MTYsOS4zMzcsNi40MTYNCgkJCWMxLjE5MiwwLDIuNDA1LTAuMjE1LDMuNTg0LTAuNjY4QzMxMS40NzIsMTY4LjAxNCwzMTQuMDQ2LDE2Mi4yMjksMzEyLjA2NSwxNTcuMDczeiIvPg0KCTwvZz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K" title="Search" style="margin-bottom:12px;"/> </a>
                           <script>
                             $(document).ready(function(){
-                              var count = 0;
-                              getMeSomeQueries(document.getElementById("changecolor").value);
-                            $("#changecolor").keydown(function(e){ 
+                            $("#changecolor").keydown(function(e){
                                 if(e.keyCode==13){
                                   document.getElementById('meme').submit();
                                 }
-                                else if(count == 0){
-                                  count +=1; 
+                                else if(e.keyCode!=40 && e.keyCode!=38){
                                   getMeSomeQueries(document.getElementById("changecolor").value);
                                 }
-                              }); 
+                              });
                             });
                           </script>
                         </div>
                       </form>
                       <!-- <form action="search_home" method="post" id = "meme">{% csrf_token %}
-                        
 
                       </form> -->
                     </div>
                 </div>
-                
+
                   <div class="col-md-6" style="z-index:100;">
                     <div class="row ">
                       <div class="col-md-8" style = "margin: auto;  transform: scale(1.4,1.4) translate(7vw,0);">
@@ -413,7 +409,7 @@
                             </div>
                             <div class="item" id="university_name" onclick="queryBackend('university_name','preference')">
                               <img class="ui image" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDU4IDU4IiB3aWR0aD0iNTEyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxnIGlkPSJQYWdlLTEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+PGcgaWQ9IjAzMS0tLVVuaXZlcnNpdHkiIGZpbGwtcnVsZT0ibm9uemVybyI+PHBhdGggaWQ9IlNoYXBlIiBkPSJtNTcgMjl2MjZoLTE4di0yOHoiIGZpbGw9IiM4NmI0Y2MiLz48cGF0aCBpZD0iU2hhcGUiIGQ9Im0xOSAyN3YyOGgtMTh2LTI2eiIgZmlsbD0iIzg2YjRjYyIvPjxwYXRoIGlkPSJSZWN0YW5nbGUtcGF0aCIgZD0ibTE3IDI3aDI0djI4aC0yNHoiIGZpbGw9IiNhMWM4ZDMiLz48cGF0aCBpZD0iU2hhcGUiIGQ9Im0yNiA0MGg2Yy41NTIyODQ3IDAgMSAuNDQ3NzE1MyAxIDF2MTJoLTh2LTEyYzAtLjU1MjI4NDcuNDQ3NzE1My0xIDEtMXoiIGZpbGw9IiM1Njc1ODAiLz48ZyBmaWxsPSIjNDY0ZjVlIj48cGF0aCBpZD0iU2hhcGUiIGQ9Im0yNiAzNmMtLjU1MjI4NDcgMC0xLS40NDc3MTUzLTEtMXYtMmMwLS41NTIyODQ3LjQ0NzcxNTMtMSAxLTFzMSAuNDQ3NzE1MyAxIDF2MmMwIC41NTIyODQ3LS40NDc3MTUzIDEtMSAxeiIvPjxwYXRoIGlkPSJTaGFwZSIgZD0ibTEyIDM3Yy0uNTUyMjg0NyAwLTEtLjQ0NzcxNTMtMS0xdi0yYzAtLjU1MjI4NDcuNDQ3NzE1My0xIDEtMXMxIC40NDc3MTUzIDEgMXYyYzAgLjU1MjI4NDctLjQ0NzcxNTMgMS0xIDF6Ii8+PHBhdGggaWQ9IlNoYXBlIiBkPSJtNiAzN2MtLjU1MjI4NDc1IDAtMS0uNDQ3NzE1My0xLTF2LTJjMC0uNTUyMjg0Ny40NDc3MTUyNS0xIDEtMXMxIC40NDc3MTUzIDEgMXYyYzAgLjU1MjI4NDctLjQ0NzcxNTI1IDEtMSAxeiIvPjxwYXRoIGlkPSJTaGFwZSIgZD0ibTEyIDQzYy0uNTUyMjg0NyAwLTEtLjQ0NzcxNTMtMS0xdi0yYzAtLjU1MjI4NDcuNDQ3NzE1My0xIDEtMXMxIC40NDc3MTUzIDEgMXYyYzAgLjU1MjI4NDctLjQ0NzcxNTMgMS0xIDF6Ii8+PHBhdGggaWQ9IlNoYXBlIiBkPSJtNiA0M2MtLjU1MjI4NDc1IDAtMS0uNDQ3NzE1My0xLTF2LTJjMC0uNTUyMjg0Ny40NDc3MTUyNS0xIDEtMXMxIC40NDc3MTUzIDEgMXYyYzAgLjU1MjI4NDctLjQ0NzcxNTI1IDEtMSAxeiIvPjxwYXRoIGlkPSJTaGFwZSIgZD0ibTEyIDQ5Yy0uNTUyMjg0NyAwLTEtLjQ0NzcxNTMtMS0xdi0yYzAtLjU1MjI4NDcuNDQ3NzE1My0xIDEtMXMxIC40NDc3MTUzIDEgMXYyYzAgLjU1MjI4NDctLjQ0NzcxNTMgMS0xIDF6Ii8+PHBhdGggaWQ9IlNoYXBlIiBkPSJtNiA0OWMtLjU1MjI4NDc1IDAtMS0uNDQ3NzE1My0xLTF2LTJjMC0uNTUyMjg0Ny40NDc3MTUyNS0xIDEtMXMxIC40NDc3MTUzIDEgMXYyYzAgLjU1MjI4NDctLjQ0NzcxNTI1IDEtMSAxeiIvPjxwYXRoIGlkPSJTaGFwZSIgZD0ibTUyIDM3Yy0uNTUyMjg0NyAwLTEtLjQ0NzcxNTMtMS0xdi0yYzAtLjU1MjI4NDcuNDQ3NzE1My0xIDEtMXMxIC40NDc3MTUzIDEgMXYyYzAgLjU1MjI4NDctLjQ0NzcxNTMgMS0xIDF6Ii8+PHBhdGggaWQ9IlNoYXBlIiBkPSJtNDYgMzdjLS41NTIyODQ3IDAtMS0uNDQ3NzE1My0xLTF2LTJjMC0uNTUyMjg0Ny40NDc3MTUzLTEgMS0xczEgLjQ0NzcxNTMgMSAxdjJjMCAuNTUyMjg0Ny0uNDQ3NzE1MyAxLTEgMXoiLz48cGF0aCBpZD0iU2hhcGUiIGQ9Im01MiA0M2MtLjU1MjI4NDcgMC0xLS40NDc3MTUzLTEtMXYtMmMwLS41NTIyODQ3LjQ0NzcxNTMtMSAxLTFzMSAuNDQ3NzE1MyAxIDF2MmMwIC41NTIyODQ3LS40NDc3MTUzIDEtMSAxeiIvPjxwYXRoIGlkPSJTaGFwZSIgZD0ibTQ2IDQzYy0uNTUyMjg0NyAwLTEtLjQ0NzcxNTMtMS0xdi0yYzAtLjU1MjI4NDcuNDQ3NzE1My0xIDEtMXMxIC40NDc3MTUzIDEgMXYyYzAgLjU1MjI4NDctLjQ0NzcxNTMgMS0xIDF6Ii8+PHBhdGggaWQ9IlNoYXBlIiBkPSJtNTIgNDljLS41NTIyODQ3IDAtMS0uNDQ3NzE1My0xLTF2LTJjMC0uNTUyMjg0Ny40NDc3MTUzLTEgMS0xczEgLjQ0NzcxNTMgMSAxdjJjMCAuNTUyMjg0Ny0uNDQ3NzE1MyAxLTEgMXoiLz48cGF0aCBpZD0iU2hhcGUiIGQ9Im00NiA0OWMtLjU1MjI4NDcgMC0xLS40NDc3MTUzLTEtMXYtMmMwLS41NTIyODQ3LjQ0NzcxNTMtMSAxLTFzMSAuNDQ3NzE1MyAxIDF2MmMwIC41NTIyODQ3LS40NDc3MTUzIDEtMSAxeiIvPjxwYXRoIGlkPSJTaGFwZSIgZD0ibTMyIDM2Yy0uNTUyMjg0NyAwLTEtLjQ0NzcxNTMtMS0xdi0yYzAtLjU1MjI4NDcuNDQ3NzE1My0xIDEtMXMxIC40NDc3MTUzIDEgMXYyYzAgLjU1MjI4NDctLjQ0NzcxNTMgMS0xIDF6Ii8+PC9nPjxwYXRoIGlkPSJTaGFwZSIgZD0ibTU3IDUzaC01NmMtLjU1MjI4NDc1IDAtMSAuNDQ3NzE1My0xIDF2MmMwIC41NTIyODQ3LjQ0NzcxNTI1IDEgMSAxaDE0YzAgLjU1MjI4NDcuNDQ3NzE1MyAxIDEgMWgyNmMuNTUyMjg0NyAwIDEtLjQ0NzcxNTMgMS0xaDE0Yy41NTIyODQ3IDAgMS0uNDQ3NzE1MyAxLTF2LTJjMC0uNTUyMjg0Ny0uNDQ3NzE1My0xLTEtMXoiIGZpbGw9IiNlZGMxMDAiLz48cGF0aCBpZD0iU2hhcGUiIGQ9Im00MyA1M3Y0YzAgLjU1MjI4NDctLjQ0NzcxNTMgMS0xIDFoLTI2Yy0uNTUyMjg0NyAwLTEtLjQ0NzcxNTMtMS0xdi00eiIgZmlsbD0iI2Y4ZThhYiIvPjxwYXRoIGlkPSJTaGFwZSIgZD0ibTM4IDQuNjJ2MTIuMzhoLTE4di0xMi4zOGw4Ljc1IDMuNDcyYy4xNjE0NC4wNTkwMjkzMS4zMzg1Ni4wNTkwMjkzMS41IDB6IiBmaWxsPSIjMzkzZjRiIi8+PHBhdGggaWQ9IlNoYXBlIiBkPSJtNTQuNTUgMjQuMTFjLS4zMzc3My0uNjc5NjU3Ny0xLjAzMTA1Ni0xLjEwOTU5NzMtMS43OS0xLjExaC03Ljc2di0ybC01LjQxLTUuNDFjLS4zNzYxNzMzLS4zNzc0NzczLS44ODcwODc3LS41ODk3NTg3LTEuNDItLjU5aC0xOS4yM2MtLjU5NTMzMDYtLjAwMzA4MDgtMS4xNjA2MTA4LjI2MTIwNi0xLjU0LjcybC00LjQgNS4yOHYyaC03Ljc2Yy0uNzU4OTQzOTcuMDAwNDAyNy0xLjQ1MjI2OTk5LjQzMDM0MjMtMS43OSAxLjExbC0yLjQ1IDQuODloNTZ6IiBmaWxsPSIjNDM5N2Q1Ii8+PHBhdGggaWQ9IlNoYXBlIiBkPSJtNDUgMjF2M2MwIC41NTIyODQ3LS40NDc3MTUzIDEtMSAxaC0zMGMtLjU1MjI4NDcgMC0xLS40NDc3MTUzLTEtMXYtM3oiIGZpbGw9IiMyYjU3ODEiLz48cGF0aCBpZD0iUmVjdGFuZ2xlLXBhdGgiIGQ9Im0xNSAyNWgyOHY0aC0yOHoiIGZpbGw9IiMzMTgwYmMiLz48cGF0aCBpZD0iU2hhcGUiIGQ9Im00MyA0LjVjLjAxMjYxOTguNDU3Mjc4OTItLjI5NTYzNzkuODYxMzQ2NDUtLjc0Ljk3bC0xLjI2LjM0LTMgLjgxLTguNzUgMi4zNWMtLjE2NDI2ODIuMDM5OTg3MDItLjMzNTczMTguMDM5OTg3MDItLjUgMGwtOC43NS0yLjM1LTQuMjYtMS4xNWMtLjQ0NDg4OTQtLjExMTQ5OTc5LS43NTY4OTUxLS41MTEzNTExMy0uNzU2ODk1MS0uOTdzLjMxMjAwNTctLjg1ODUwMDIxLjc1Njg5NTEtLjk3bDEzLjAxLTMuNWMuMTY0MjY4Mi0uMDM5OTg3MDIuMzM1NzMxOC0uMDM5OTg3MDIuNSAwbDExLjc1IDMuMTYgMS4yNi4zNGMuNDQ0MzYyMS4xMDg2NTM1NS43NTI2MTk4LjUxMjcyMTA4Ljc0Ljk3eiIgZmlsbD0iIzQ2NGY1ZSIvPjxwYXRoIGlkPSJTaGFwZSIgZD0ibTQzLjc1IDExLjU1Yy0uMTgzOTgzNS4yNzkzODUyLS40OTU0ODA5LjQ0ODI2OTQtLjgzLjQ1LS4xOTY2MTA0LjAwMjMxNTItLjM4ODk4NzItLjA1NzE0NjctLjU1LS4xNy0uODU3MDQ4Ny0uNTY0OTY0NS0xLjM3MjAyMzctMS41MjM0OTQ3LTEuMzctMi41NXYtMy40N2wxLjI2LS4zNGMuNDQ0MzYyMS0uMTA4NjUzNTUuNzUyNjE5OC0uNTEyNzIxMDguNzQtLjk3djQuNzhjLjAwMDE2MjUuMzU4NTA2ODEuMTgwNTIxMy42OTI5MjIxNi40OC44OS4yMjAzOTU4LjE0NTg5ODYuMzczMDY1My4zNzQwOTg5LjQyMzgxNjMuNjMzNDkyNS4wNTA3NTA5LjI1OTM5MzYtLjAwNDY1NzcuNTI4MzA0OC0uMTUzODE2My43NDY1MDc1eiIgZmlsbD0iI2VkYzEwMCIvPjwvZz48L2c+PC9zdmc+" />
-                              University Name 
+                              University Name
                             </div>
                             <div class="item" id="interest" onclick="queryBackend('Interests','preference')">
                               <img class="ui  image" src="data:image/svg+xml;base64,PHN2ZyBpZD0iZmlsbGVkX291dGxpbmUiIGhlaWdodD0iNTEyIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBkYXRhLW5hbWU9ImZpbGxlZCBvdXRsaW5lIj48cGF0aCBkPSJtMjMyIDIzMnYyNDBhMTUuOTk1NTUgMTUuOTk1NTUgMCAwIDEgLTE2IDE2aC0xNzZhMTUuOTk1NTUgMTUuOTk1NTUgMCAwIDEgLTE2LTE2di0xODUuMzdhMTYuMTQ0MzcgMTYuMTQ0MzcgMCAwIDEgNC42ODk5NC0xMS4zMmw1NC42MjAxMi01NC42MmExNi4xNDQ0MyAxNi4xNDQ0MyAwIDAgMSAxMS4zMTk4Mi00LjY5aDEyMS4zNzAxMmExNS45OTU1MiAxNS45OTU1MiAwIDAgMSAxNiAxNnoiIGZpbGw9IiM1NDhhZmYiLz48cGF0aCBkPSJtODggMjE3LjQ1djQ2LjU1YTE1Ljk5NTU1IDE1Ljk5NTU1IDAgMCAxIC0xNiAxNmgtNDYuNTVhMTUuODI3NjEgMTUuODI3NjEgMCAwIDEgMy4yNC00LjY5bDU0LjYyMDEyLTU0LjYyYTE1LjgyMzIzIDE1LjgyMzIzIDAgMCAxIDQuNjg5ODgtMy4yNHoiIGZpbGw9IiM3ZGFmZmYiLz48cGF0aCBkPSJtMjgwIDM4NGg0OHY1NmgtNDh6IiBmaWxsPSIjZjU3MTRmIi8+PHBhdGggZD0ibTMyOCAzMzZoNDh2MTA0aC00OHoiIGZpbGw9IiM0OTc2ZjIiLz48cGF0aCBkPSJtMzc2IDI4OGg0OHYxNTJoLTQ4eiIgZmlsbD0iIzU0OGFmZiIvPjxwYXRoIGQ9Im00MjQgMjQwaDQ4djIwMGgtNDh6IiBmaWxsPSIjNjM5YWZmIi8+PGcgZmlsbD0iI2JlZDNmNyI+PGNpcmNsZSBjeD0iNDAiIGN5PSIxOTIiIHI9IjE2Ii8+PGNpcmNsZSBjeD0iOTYiIGN5PSIxMzYiIHI9IjE2Ii8+PGNpcmNsZSBjeD0iMTc2IiBjeT0iMTM2IiByPSIxNiIvPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjgwIiByPSIxNiIvPjwvZz48cGF0aCBkPSJtNDg4IDEyMGE5NiA5NiAwIDEgMSAtOTYtOTYgOTUuNzE2NzMgOTUuNzE2NzMgMCAwIDEgOTYgOTZ6IiBmaWxsPSIjZmZjNDMxIi8+PHBhdGggZD0ibTQ4OCAxMjBoLTk2di05NmE5NS45OTkxMiA5NS45OTkxMiAwIDAgMSA5NiA5NnoiIGZpbGw9IiM1NDhhZmYiLz48cGF0aCBkPSJtNDg4IDEyMGE5NS43MTY3MyA5NS43MTY3MyAwIDAgMSAtMzIuMjMgNzEuNzVsLTYzLjc3LTcxLjc1eiIgZmlsbD0iI2Y1NzE0ZiIvPjxjaXJjbGUgY3g9IjE4NCIgY3k9IjI2NCIgZmlsbD0iI2JlZDNmNyIgcj0iMTYiLz48Y2lyY2xlIGN4PSIxOTIiIGN5PSI0NDAiIGZpbGw9IiNiZWQzZjciIHI9IjE2Ii8+PHBhdGggZD0ibTEyMCAyNjRoMjR2MTZoLTI0eiIvPjxwYXRoIGQ9Im0xNzYgMzA0aDI0djE2aC0yNHoiLz48cGF0aCBkPSJtMTIwIDMwNGg0MHYxNmgtNDB6Ii8+PHBhdGggZD0ibTU2IDMwNGg0OHYxNmgtNDh6Ii8+PHBhdGggZD0ibTEwNCAzNDRoOTZ2MTZoLTk2eiIvPjxwYXRoIGQ9Im01NiAzNDRoMzJ2MTZoLTMyeiIvPjxwYXRoIGQ9Im0xNTIgMzg0aDQ4djE2aC00OHoiLz48cGF0aCBkPSJtNTYgMzg0aDgwdjE2aC04MHoiLz48cGF0aCBkPSJtMTA0IDQyNGg0OHYxNmgtNDh6Ii8+PHBhdGggZD0ibTU2IDQyNGgzMnYxNmgtMzJ6Ii8+PHBhdGggZD0ibTQ4MCAyNDBhOC4wMDAwOCA4LjAwMDA4IDAgMCAwIC04LThoLTQ4YTguMDAwMDggOC4wMDAwOCAwIDAgMCAtOCA4djQwaC00MGE4LjAwMDA4IDguMDAwMDggMCAwIDAgLTggOHY0MGgtNDBhOC4wMDAwOCA4LjAwMDA4IDAgMCAwIC04IDh2NDBoLTQwYTguMDAwMDggOC4wMDAwOCAwIDAgMCAtOCA4djQ4aC01Ny4zNzYyMmEyNCAyNCAwIDEgMCAwIDE2aDkuMzc2MjJ2MjRhOC4wMDkxNyA4LjAwOTE3IDAgMCAxIC04IDhoLTE3NmE4LjAwOTE3IDguMDA5MTcgMCAwIDEgLTgtOHYtMTg0aDQwYTI0LjAyNzUgMjQuMDI3NSAwIDAgMCAyNC0yNHYtNDBoMTIwYTguMDA5MTcgOC4wMDkxNyAwIDAgMSA4IDh2OGgxNnYtOGEyNC4wMjc1IDI0LjAyNzUgMCAwIDAgLTI0LTI0aC0xMjEuMzczMDVhMjMuODQzODUgMjMuODQzODUgMCAwIDAgLTE2Ljk3MDcgNy4wMjk3OWwtNTQuNjI2OTUgNTQuNjI3YTIzLjg0MjU0IDIzLjg0MjU0IDAgMCAwIC03LjAyOTMgMTYuOTcwNjV2MTg1LjM3MjU2YTI0LjAyNzUgMjQuMDI3NSAwIDAgMCAyNCAyNGgxNzZhMjQuMDI3NSAyNC4wMjc1IDAgMCAwIDI0LTI0di0yNGgyNTZ2LTE2aC0xNnptLTQwMC00LjY4NnYyOC42ODZhOC4wMDkxNyA4LjAwOTE3IDAgMCAxIC04IDhoLTI4LjY4NnptMTEyIDIxMi42ODZhOCA4IDAgMSAxIDgtOCA4LjAwOTE3IDguMDA5MTcgMCAwIDEgLTggOHptOTYtNTZoMzJ2NDBoLTMyem00OC00OGgzMnY4OGgtMzJ6bTQ4LTQ4aDMydjEzNmgtMzJ6bTQ4IDEzNnYtMTg0aDMydjE4NHoiLz48cGF0aCBkPSJtNDAgMjE2YTIzLjk5NDQ4IDIzLjk5NDQ4IDAgMCAwIDIxLjY1NDc5LTM0LjM0MDdsMjQuMDA0MzktMjQuMDA0NjRhMjMuOTg4NyAyMy45ODg3IDAgMCAwIDMyLjk2NDYtMTMuNjU0NjZoMzQuNzUyNDRhMjMuOTk1MjkgMjMuOTk1MjkgMCAwIDAgNDYuMjkwMjgtNC4wMzQ3OWw0NS4xNzktMzguNzI0NzNhMjQuMDAwNTQgMjQuMDAwNTQgMCAxIDAgLTEwLjg4MjgxLTExLjc0NWwtMzguMjczMjQgMzIuODA1NTJhMjMuOTgzMzUgMjMuOTgzMzUgMCAwIDAgLTQyLjMxMzIzIDUuNjk5aC0zNC43NTI0NGEyMy45OTcxOCAyMy45OTcxOCAwIDEgMCAtNDQuMjc4NTcgMTguMzQwN2wtMjQuMDA0MzkgMjQuMDA0NjRhMjMuOTk4NzIgMjMuOTk4NzIgMCAxIDAgLTEwLjM0MDgyIDQ1LjY1NDY2em0yMTYtMTQ0YTggOCAwIDEgMSAtOCA4IDguMDA5MTcgOC4wMDkxNyAwIDAgMSA4LTh6bS04MCA1NmE4IDggMCAxIDEgLTggOCA4LjAwOTE3IDguMDA5MTcgMCAwIDEgOC04em0tODAgMGE4IDggMCAxIDEgLTggOCA4LjAwOTE3IDguMDA5MTcgMCAwIDEgOC04em0tNTYgNTZhOCA4IDAgMSAxIC04IDggOC4wMDkxNyA4LjAwOTE3IDAgMCAxIDgtOHoiLz48cGF0aCBkPSJtMzI5LjU2NTQzIDIwMy4xMjA2Ny01Mi44Nzg5MSA1Mi44NzkzM2gtNzAuMDYyNzRhMjQgMjQgMCAxIDAgMCAxNmgxNy4zNzYyMnYxNDRoMTZ2LTE0NGg0MGE4LjAwMDc2IDguMDAwNzYgMCAwIDAgNS42NTcyMy0yLjM0MzI2bDU3LjczNzc3LTU3LjczNzc0YTEwNC4yODQxNyAxMDQuMjg0MTcgMCAxIDAgLTEzLjgyOTU5LTguNzk4Mjh6bS0xNDUuNTY1NDMgNjguODc5MzNhOCA4IDAgMSAxIDgtOCA4LjAwOTE3IDguMDA5MTcgMCAwIDEgLTggOHptMjcyLjE3MDQxLTkxLjg1MDIyLTQ2LjM1NTQ3LTUyLjE0OTc4aDY5LjgxNzM4YTg3LjcwNTggODcuNzA1OCAwIDAgMSAtMjMuNDYxOTEgNTIuMTQ5Nzh6bTIzLjQ2MTkxLTY4LjE0OTc4aC03OS42MzIzMnYtNzkuNjMyNTFhODguMTQ0MTMgODguMTQ0MTMgMCAwIDEgNzkuNjMyMzIgNzkuNjMyNTF6bS05NS42MzIzMi03OS42MzI1MXY4Ny42MzI1MWE3Ljk1ODgxIDcuOTU4ODEgMCAwIDAgMi4wMjczNCA1LjMwOTA4bC0uMDA2ODMuMDA1ODYgNTguMTk3MjYgNjUuNDcyMTFhODcuOTgzMDcgODcuOTgzMDcgMCAxIDEgLTYwLjIxNzc3LTE1OC40MTk1NnoiLz48L3N2Zz4=" />
@@ -424,14 +420,14 @@
                               Default
                             </div>
                           </div>
-                          
+
                         </div>
                         <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
                         <script>
                           $('#multi-select').dropdown();
                         </script>
                       </div>
-                    <div class="col-md-4">                      
+                    <div class="col-md-4">
                       <div class="row">
                         <div class="col-md-6">
                           <div class="dropdown">
@@ -444,7 +440,7 @@
                               <a href="#">Lifetime</a> -->
                             </div>
                           </div>
-                          
+
                         </div>
                         <div class="col-md-5">
                               <!-- <a class="links" href="#user"><button class="signbutton" type="button" style="margin-right:100px;margin-top:20px;">Sign in</button></a></li> -->
@@ -461,10 +457,9 @@
             </div>
             <!-- <div class="row" >
                 <div class="col-md-1">
-
                 </div>
                 <div class="col-md-4">
-                    
+
                 </div>
             </div> -->
         </div>
@@ -501,7 +496,7 @@
                             <h4 class="job-title">{{prof.institute}}</h4>
                             <div class="bio tooll" data-jbox-title="All Research Interests" data-jbox-content='<ol>{% for i in prof.allInterest %}<li>{{i}}</li>{% endfor %}</ol>'>{{prof.interests}}</div>
                         </div>
-                  
+
                         <div class="card-footer">
                             <div class="stats">
                                 <div class="stat">
@@ -519,14 +514,14 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
-                {% endfor %}    
+                {% endfor %}
             </div>
             {% endfor %}
           </div>
           <div id="part2">
-            
+
           </div>
           <div id="part3">
 
@@ -559,7 +554,7 @@
         </script>
         {%endifequal%}
 
-        
+
         <script>
           new jBox('Tooltip', {
             attach: '.tooll',
@@ -592,16 +587,16 @@
                       repositionOnOpen: false,
                       repositionOnContent: false,
                       theme: temp
-                    });  
+                    });
                   });
-                  
+
               </script>
         {% endfor %}
       {% endfor %}
       <script>
         currentTheme = localStorage.getItem("theme");
         var temp = "";
-        if(currentTheme == "dark") temp = "TooltipDark";  
+        if(currentTheme == "dark") temp = "TooltipDark";
         new jBox('Tooltip', {
           id: 'pub2',
           attach: '.tooll',
@@ -639,8 +634,8 @@
           <span></span>
           </div>
         </label>
- 
-        <script> 
+
+        <script>
             var checkTheme = localStorage.getItem("theme");
             if(checkTheme == "dark"){
               localStorage.setItem("theme", "dark");
@@ -668,9 +663,9 @@
               var cards = document.getElementsByClassName("card");
               for (var i= 0; i < cards.length; i++){
                 cards.item(i).style.backgroundColor="#69779b";
-              }   
+              }
 
-              
+
             }
             else {
               localStorage.setItem("theme", "light");
@@ -684,7 +679,7 @@
               document.getElementById("multi-select").style.color = "#000000";
               document.getElementById("top-bar").style.backgroundColor = "white";
               document.getElementById("myDropdown").style.backgroundColor = "white";
-              
+
               var labels = document.getElementsByClassName("labels");
               for(var i =0; i < labels.length; i++){
                 labels.item(i).style.color="#95989A"
@@ -716,7 +711,7 @@
               document.getElementById("multi-select").style.color = "#000000";
               document.getElementById("top-bar").style.backgroundColor = "white";
               document.getElementById("myDropdown").style.backgroundColor = "white";
-              
+
               var cards = document.getElementsByClassName("card");
               for (var i= 0; i < cards.length; i++){
                 cards.item(i).style.backgroundColor="white";
@@ -735,7 +730,7 @@
               }
 
               var x = document.getElementsByClassName("jBox-content");
-          
+
               for(var p=0;p<x.length;p++){
                 x.item(p).style.backgroundColor = "white";
                 x.item(p).style.color = "black"
@@ -744,7 +739,7 @@
               for(var p=0;p<x.length;p++){
                 x.item(p).style.backgroundColor = "white";
                 x.item(p).style.color = "black"
-                
+
               }
 
             }
@@ -776,7 +771,7 @@
               }
 
               var x = document.getElementsByClassName("jBox-content");
-          
+
               for(var p=0;p<x.length;p++){
                 x.item(p).style.backgroundColor = "#2b2e4a";
                 x.item(p).style.color = "white"
@@ -803,15 +798,15 @@
         a.setAttribute("id", this.id + "autocomplete-list");
         a.setAttribute("class", "autocomplete-items");
         var checkTheme = localStorage.getItem("theme");
-        if(checkTheme == "dark") a.setAttribute("style", "color: white;"); 
-        else a.setAttribute("style", "color: black"); 
+        if(checkTheme == "dark") a.setAttribute("style", "color: white;");
+        else a.setAttribute("style", "color: black");
         this.parentNode.appendChild(a);
         for (i = 0; i < arr.length; i++) {
-  
+
           if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
             b = document.createElement("DIV");
-            if(checkTheme == "dark")b.setAttribute("style", "background-color: black"); 
-            else b.setAttribute("style", "background-color: white"); 
+            if(checkTheme == "dark")b.setAttribute("style", "background-color: black");
+            else b.setAttribute("style", "background-color: white");
             b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
             b.innerHTML += arr[i].substr(val.length);
             b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
@@ -883,7 +878,7 @@
     }
     autocomplete(document.getElementById("changecolor"), final);
   }
-  
+
   </script>
           <script>
             var part=0;
@@ -899,7 +894,7 @@
                             <h4 class="job-title">{{prof.institute}}</h4>
                             <div class="bio tooll" data-jbox-title="All Research Interests" data-jbox-content='<ol>{% for i in prof.allInterest %}<li>{{i}}</li>{% endfor %}</ol>'>{{prof.interests}}</div>
                         </div>
-                  
+
                         <div class="card-footer">
                             <div class="stats">
                                 <div class="stat">
@@ -917,9 +912,9 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
-                {% endfor %}    
+                {% endfor %}
             </div>
             {% endfor %}
             `,`
@@ -935,7 +930,7 @@
                             <h4 class="job-title">{{prof.institute}}</h4>
                             <div class="bio tooll" data-jbox-title="All Research Interests" data-jbox-content='<ol>{% for i in prof.allInterest %}<li>{{i}}</li>{% endfor %}</ol>'>{{prof.interests}}</div>
                         </div>
-                  
+
                         <div class="card-footer">
                             <div class="stats">
                                 <div class="stat">
@@ -953,9 +948,9 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
-                {% endfor %}    
+                {% endfor %}
             </div>
             {% endfor %}
             `,
@@ -971,7 +966,7 @@
                             <h4 class="job-title">{{prof.institute}}</h4>
                             <div class="bio tooll" data-jbox-title="All Research Interests" data-jbox-content='<ol>{% for i in prof.allInterest %}<li>{{i}}</li>{% endfor %}</ol>'>{{prof.interests}}</div>
                         </div>
-                  
+
                         <div class="card-footer">
                             <div class="stats">
                                 <div class="stat">
@@ -989,21 +984,21 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
-                {% endfor %}    
+                {% endfor %}
             </div>
             {% endfor %}`]
             function addthere(){
               if(part>=3){
-               return; 
+               return;
               }
               else if(part==2){
                 document.getElementById("part4").innerHTML = htmlextra[2];
                 part+=1
                 currentTheme = localStorage.getItem("theme");
                 var temp = "";
-                if(currentTheme == "dark") temp = "TooltipDark";  
+                if(currentTheme == "dark") temp = "TooltipDark";
                 new jBox('Tooltip', {
                   id: 'pub2',
                   attach: '.tooll',
@@ -1029,7 +1024,7 @@
                           repositionOnOpen: false,
                           repositionOnContent: false,
                           theme: temp
-                        });  
+                        });
                       });
             {% endfor %}
           {% endfor %}
@@ -1040,7 +1035,7 @@
                 part+=1
                 currentTheme = localStorage.getItem("theme");
                 var temp = "";
-                if(currentTheme == "dark") temp = "TooltipDark";  
+                if(currentTheme == "dark") temp = "TooltipDark";
                 new jBox('Tooltip', {
                   id: 'pub2',
                   attach: '.tooll',
@@ -1066,7 +1061,7 @@
                           repositionOnOpen: false,
                           repositionOnContent: false,
                           theme: temp
-                        });  
+                        });
                       });
             {% endfor %}
           {% endfor %}
@@ -1076,7 +1071,7 @@
                 part+=1
                 currentTheme = localStorage.getItem("theme");
                 var temp = "";
-                if(currentTheme == "dark") temp = "TooltipDark";  
+                if(currentTheme == "dark") temp = "TooltipDark";
                 new jBox('Tooltip', {
                   id: 'pub2',
                   attach: '.tooll',
@@ -1102,19 +1097,19 @@
                       repositionOnOpen: false,
                       repositionOnContent: false,
                       theme: temp
-                    });  
+                    });
                   });
-                  
+
         {% endfor %}
       {% endfor %}
-                  
+
               }
             }
           </script>
-          
+
       <div id="addthereRemove">
           <button onclick="addthere(); toggle_mode(); toggle_mode();">Show More</button>
         </div>
-    
+
     </body>
 </html>

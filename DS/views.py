@@ -28,7 +28,7 @@ choice_num = 4
 def clean_string(text) :
 	text = (text.encode('ascii', 'ignore')).decode("utf-8")
 	text = re.sub("&.*?;", "", text)
-	text = re.sub(">", "", text)    
+	text = re.sub(">", "", text)
 	text = re.sub("[\]\|\[\@\,\$\%\*\&\\\(\)\":]", "", text)
 	text = re.sub("-", " ", text)
 	text = re.sub("\.+", "", text)
@@ -53,7 +53,7 @@ def query_result(n, query):
                 if doc['Scholar_ID'] in list_doc:
                     if(doc['Scholar_ID'] not in curr_done):
                         curr_done.add(doc["Scholar_ID"])
-                        freq_counter[doc['Scholar_ID']] += 1   
+                        freq_counter[doc['Scholar_ID']] += 1
                     curr_freq = freq_counter[doc['Scholar_ID']]
                     list_doc[doc['Scholar_ID']]['score'] += 2**curr_freq*doc['score']
 
@@ -62,10 +62,10 @@ def query_result(n, query):
                     if(doc['score_univ'] != -1):
                         list_doc[doc['Scholar_ID']]['score_univ'] += doc['score_univ']
                 else :
-                    freq_counter[doc['Scholar_ID']] = 1   
+                    freq_counter[doc['Scholar_ID']] = 1
                     scholar_id = doc['Scholar_ID']
                     list_doc[scholar_id] = doc.copy()
-            
+
     else :
         query = query.lower()
         query = clean_string(query)
@@ -73,14 +73,14 @@ def query_result(n, query):
             for doc in indexFile[query]:
                 scholar_id = doc['Scholar_ID']
                 list_doc[scholar_id] = doc.copy()
-        
+
 
 
     list_data=[]
-    
+
     for data in list_doc:
         list_data.append(list_doc[data])
-        
+
 
 
     count = 1
@@ -125,7 +125,7 @@ def query_result(n, query):
 
     return res
 
-# from quoters import Quote 
+# from quoters import Quote
 def home(request):
     return render(request,"index.html")
 
@@ -144,7 +144,7 @@ class prof:
         self.institute = institute
         self.interests = interests
         self.hIndex = hIndex
-        self.i10Index = i10Index 
+        self.i10Index = i10Index
         self.homepage = homepage
         self.allInterest = allInterest
         self.summary = homepage_summary
@@ -188,7 +188,7 @@ def home_search(request):
                 break
             if(search_result[i*3+j]["University_name"] == None or search_result[i*3+j]["University_name"] == 'Homepage'):
                 search_result[i*3+j]["University_name"] = "NA"
-            temp.append(prof(i*3+j,search_result[i*3+j]["Name"], search_result[i*3+j]["img_src"],search_result[i*3+j]["University_name"][:30],", ".join(search_result[i*3+j]["Research_Interests"][:3])[:80],search_result[i*3+j]["H Index"],search_result[i*3+j]["I10 Index"],len(search_result[i*3+j]["Publications"]),search_result[i*3+j]["home_page_url"],search_result[i*3+j]["home_page_summary"],search_result[i*3+j]["Publications"],search_result[i*3+j]["Research_Interests"]))            
+            temp.append(prof(i*3+j,search_result[i*3+j]["Name"], search_result[i*3+j]["img_src"],search_result[i*3+j]["University_name"][:30],", ".join(search_result[i*3+j]["Research_Interests"][:3])[:80],search_result[i*3+j]["H Index"],search_result[i*3+j]["I10 Index"],len(search_result[i*3+j]["Publications"]),search_result[i*3+j]["home_page_url"],search_result[i*3+j]["home_page_summary"],search_result[i*3+j]["Publications"],search_result[i*3+j]["Research_Interests"]))
         array.append(temp)
     # print(time.time()-x)
     l = len(array)
@@ -214,7 +214,7 @@ def home_search(request):
 @csrf_exempt
 def pref(request):
     # print(request.body.decode())
-    global choice 
+    global choice
     global choice_num
     if(request.body.decode() == 'prof_name'):
         choice = 'prof_name'
@@ -253,7 +253,7 @@ def reg(request):
     user = User.objects.create_user(username=name,password=password,email=email)
     user.save()
     print(user)
-    return redirect("index.html")
+    return redirect("/")
 
 def login(request):
     name = request.POST["name"]
@@ -261,13 +261,13 @@ def login(request):
     user = auth.authenticate(username=name,password=password)
     if user is not None:
         auth.login(request,user)
-        return redirect("index.html")
+        return redirect("/")
     else:
         return redirect("register")
-    
+
 def logout(request):
     auth.logout(request)
-    return redirect("index.html")
+    return redirect("/")
 
 def collaborative():
     allUsers = history.objects.all()
@@ -304,7 +304,7 @@ def similar(collaborativeVector):
                         sim+=1
                 similarity[(i,j)] = sim
                 similarity[(j,i)] = sim
-    return similarity        
+    return similarity
 
 def getTop(similarity,collaborativeVector,maxSim):
     noOfUsers = len(collaborativeVector)
@@ -346,8 +346,10 @@ def queries(request):
         return JsonResponse({'list':quer})
     else:
         return JsonResponse({'list':["Machine Learning"]})
-  
-@csrf_exempt    
+
+
+
+@csrf_exempt
 def delHistory(request):
     print(request.body.decode())
     all = history.objects.filter(username=request.user.username)
