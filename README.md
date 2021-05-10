@@ -5,13 +5,13 @@
 
 Information retrieval and its accuracy has proposed several challenges to scholars in our ever increasing data-centric world. As the data has increased, information has decreased and finding relevant information has become difficult concerning many spheres of life. We tackle one such problem in this paper regarding academic search of professors based on their research interests, publications, universities etc. The proposed search engine can be used by scholars to narrow down their search of universities, research areas or professors based on various criterias and preferences. The search engine can provide them a platform to evaluate various universities, research areas etc. before opting them in their career paths. 
 
-Refer [here](./architecture/Project_Proposal_Mini_LinkedIn.pdf) for our **project proposal** for Scholaris.
+Refer [here](https://drive.google.com/file/d/1weuCTmT9MVvDqZZ68M9xANl6u63Qjdta/view?usp=sharing) for our **project proposal** for Scholaris.
 
-Refer [here](./architecture/Mini-Linkedin_Presentation.pdf) for our **presentation slides** for Scholaris.
+Refer [here](https://drive.google.com/file/d/16eVVmE6eEPuwG_MMWuHwdwqVMfqHndP6/view?usp=sharing) for our **presentation slides** for Scholaris.
 
-Refer [here](./architecture/Mini-LinkedIn_Design_Document.pdf) for **NeurIPS format** for Scholaris.
+Refer [here](https://drive.google.com/file/d/17f3G5L8Ey3hTvg_EWb0GHcVUOZ9B9P9I/view?usp=sharing) for **NeurIPS format** for Scholaris.
 
-Refer [here](https://drive.google.com/file/d/1vJW2BivOlTaVQUtTXIGNVeY_G1q-XK-u/view?usp=drivesdk) for **demonstration video** of our project. 
+Refer [here]() for **demonstration video** of our project. 
 
 ## Codebase Directory Architecture 📁
 ```
@@ -189,6 +189,8 @@ If a user finds similar interests with other groups of users, then the searches 
 * After the scraping is finished a `prof.json` file is created in `./DS/Prof` directory, run the following command to create the index `python3 tf-idf.py` in the same directory. The above command creates an index file `index_file.lzma`.
 * To run the server on localhost, install `Django` using `pip install django` command and run the command `python3 manage.py runserver` in the root directory. The search engine will be up and running at `http://localhost:8000`.
 
+## References and Credits 💳
 
+This project has been made as a part of project component of the course CS:328 Introduction to Data Science offered at IIT Gandhinagar in Semester-II of AY 2020-21 under the guidance of Prof. Anirban Dasgupta.
 
 ### Note: The aim of the project was not to build a UI. Therefore the website is not responsive. 
