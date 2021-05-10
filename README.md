@@ -136,11 +136,11 @@ Other stats              |  Total Publications
 
 * The scraped data in JSON file from the crawling step is loaded and preprocessed by removing stop words. Stop words are the set of commonly used words which need to be filtered out before processing the data so that the focus can be on important words.
 * The data is also cleaned by removing spaces, punctuations and special characters using regular expressions and matching the patterns within the text. After preprocessing the data,it is used to create the TF-IDF score. For calculating the TF-IDF score, separate dictionaries for term frequency, document frequency and inverse document frequency are created.
-* The term frequency of a word is the number of times a word appears in a document and the document frequency of a word is the number of documents containing that word. The dictionaries for term and document frequency keep the count as defined above.The term frequency $tf(t,d)$ of term $t$ in document $d$ is given by <br/>
+* The term frequency of a word is the number of times a word appears in a document and the document frequency of a word is the number of documents containing that word. The dictionaries for term and document frequency keep the count as defined above.The term frequency tf(t,d) of term t in document d is given by <br/>
 ![TF](./images/TFIDF.png)
 * To facilitate the use of different searching criteria, separate dictionaries are maintained for term and document frequency each for research interests, university names and professor names giving different weights to words. This is done so that exact results can be served to the user requesting for specific university names, professor names etc.
 * The term frequency for each document is stored using the scholar ID’s of professors as keys in the dictionary. After the creation of term and document frequencies, inverse document frequency of each word is calculated.
-* The inverse document frequency of a word is the measure of how rare or common the wordis in the whole corpus. It is calculated by taking logarithm of the total number of documents divided by the number of documents containing that word. The inverse document frequency $idf(t,D)$ of term t in corpus $D$ is given by<br/>
+* The inverse document frequency of a word is the measure of how rare or common the wordis in the whole corpus. It is calculated by taking logarithm of the total number of documents divided by the number of documents containing that word. The inverse document frequency idf(t,D) of term t in corpus D is given by<br/>
 ![IDF](./images/TF.png)
 * Finally the TF-IDF score for each scholar ID is calculated using the formula:<br/>
 ![TF-IDF](./images/IDF.png)
@@ -158,7 +158,7 @@ After the creation of the index, the query engine can find the results for the s
 * The entered query is then cleaned and split into words separated by spaces except when the search is on research interests.
 * The processed query is sent to the server where it is then used to calculate document score.
 * The score of a document is increased exponentially as more and more words are matched from the tokenized query on the same document.
-* For example, suppose we search for “Online coresets for clustering with Bregman divergences” and suppose document ‘A’ first matches with Bregman in the query and document ‘B’ matches with 3 previous words (say corsets, clustering and online) as well as with Bregman, then the word Bregman will have a weight of $2^0$. in document ‘A’, and it will have a weight of $2^3$ in document ‘B’.
+* For example, suppose we search for “Online coresets for clustering with Bregman divergences” and suppose document ‘A’ first matches with Bregman in the query and document ‘B’ matches with 3 previous words (say corsets, clustering and online) as well as with Bregman, then the word Bregman will have a weight of 2^0. in document ‘A’, and it will have a weight of 2^3 in document ‘B’.
 * The exponential increase helps in filtering a lot of unnecessary results, which just happens to match some of the words from the query.
 * The document score and some other parameters (h-index as of now) are then used to rank the documents by the query engine and the required number of results are returned to the client. 
 
