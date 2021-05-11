@@ -9,7 +9,7 @@ Refer [here](https://drive.google.com/file/d/1weuCTmT9MVvDqZZ68M9xANl6u63Qjdta/v
 
 Refer [here](https://drive.google.com/file/d/16eVVmE6eEPuwG_MMWuHwdwqVMfqHndP6/view?usp=sharing) for our **presentation slides** for Scholaris.
 
-Refer [here](https://drive.google.com/file/d/17f3G5L8Ey3hTvg_EWb0GHcVUOZ9B9P9I/view?usp=sharing) for **NeurIPS format** for Scholaris.
+Refer [here](https://drive.google.com/file/d/1A8WpnJwAm4MCMqe233OxC6aC5Cmtv0XX/view?usp=sharing) for **NeurIPS format** for Scholaris.
 
 Refer [here](https://drive.google.com/file/d/1TX_nmBeafJQEglPLspJ0Dh92MW0P3sXk/view?usp=sharing) for **demonstration video** of our project. 
 
